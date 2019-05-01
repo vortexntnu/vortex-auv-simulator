@@ -52,7 +52,7 @@
     <!-- Bounding box with sea surface -->
     <include>
       <uri>model://ocean_box</uri>
-      <pose>0 0 -0.1 0 0 0</pose>
+      <pose>15 0 -0.1 0 0 0</pose>
     </include> 
 
     <!-- Bounding box with sea surface -->
@@ -60,33 +60,22 @@
    
 		<include>
       <name>pool</name>
-      <pose>0 0 -2 0 0 0</pose>
+      <pose>15 0 -2 0 0 0</pose>
       <uri>model://2018/Pool</uri>
     </include>
 
 		<include>
       <name>pole</name>
-      <pose>20 0 -2.5 0 0 0</pose>
+      <pose>35 0 -2.5 0 0 0</pose>
       <uri>model://2018/Pole</uri>
     </include>
 
 		<include>
       <name>test_gate</name>
-      <pose>-10 0 -2 0 0 0</pose>
+      <pose>5 0 -2 0 0 0</pose>
       <uri>model://2018/test_gate</uri>
     </include>
 
-		<include>
-      <name>vortex_logo_1</name>
-      <pose>-10 0 -2.79 0 0 0</pose>
-      <uri>model://2018/vortex_logo</uri>
-    </include>
-
-		<include>
-      <name>vortex_logo_2</name>
-      <pose>10 0 -2.79 0 0 0</pose>
-      <uri>model://2018/vortex_logo</uri>
-    </include>
 
 
 
