@@ -6,7 +6,7 @@ material VortexLogo
         {
             texture_unit
             {
-                texture Vortex_Logo.png
+                texture draugr.jpg
                 filtering anistropic
                 max_anistropy 16
             }
