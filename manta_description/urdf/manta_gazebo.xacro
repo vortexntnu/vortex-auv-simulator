@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
-<!-- 
-     Written by Kristoffer Rakstad Solberg, Student
-     Copyright (c) 2019 Manta AUV, Vortex NTNU.
-     All rights reserved. -->
+<!-- Copyright (c) 2016 The UUV Simulator Authors.
+     All rights reserved.
+
+     Contributed by Kristoffer Rakstad Solberg, 
+     Student2019 Manta AUV, Vortex NTNU. -->
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
@@ -33,12 +34,12 @@
           <type>fossen</type>
           <!-- Added mass: see p.28 in Berg2012 -->
           <added_mass>
-            1.7182 0 0 0 0 0 
-            0 0 0 0 0 0
-            0 0 5.468 0 0 0
-            0 0 0 10 0 0
-            0 0 0 0 10.2481 0
-            0 0 0 0 0 0.4006
+            10.7727 0 0 0 0 0 
+            0 10.7727 0 0 0 0
+            0 0 49.7679 0 0 0
+            0 0 0 1.0092 0 0
+            0 0 0 0 1.0092 0
+            0  0  0  0  0  0
           </added_mass>
           <!--
             The linear damping coefficients can be provided as a diagonal (6 elements)
@@ -46,7 +47,7 @@
             Linear damping: see p.31 in Berg2012
           -->
           <linear_damping>
-            -11.7391 -20 -31.8678 -25 -44.9085 -5
+            -9.5909 -9.5909 -42.5798 -13.3040 -13.2181 -1.1559
           </linear_damping>
           <!--
             The linear damping coefficients proportional to the forward speed
@@ -63,7 +64,7 @@
             Non-linear damping: see p.30 in Berg2012
           -->
           <quadratic_damping>
-            0 0 0 0 0 0
+            -5.1386 -5.1386 -26.1105 0 0 0
           </quadratic_damping>
 
           <!--

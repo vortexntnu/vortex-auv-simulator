@@ -10,7 +10,6 @@ project(simulator_launch)
 find_package(catkin REQUIRED COMPONENTS
   vortex
   navigation_launch
-
 )
 
 ## System dependencies are found with CMake's conventions
