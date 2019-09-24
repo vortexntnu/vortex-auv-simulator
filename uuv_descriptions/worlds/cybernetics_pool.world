@@ -28,6 +28,8 @@
         </solver>
       </ode>
     </physics>
+
+    <!-- Scene -->
     <scene>
       <ambient>0.01 0.01 0.01 1.0</ambient>
       <sky>
@@ -37,13 +39,13 @@
       </sky>
       <shadows>1</shadows>
       <fog>
-        <color>0.1 0.2 0.3 1.0</color>
+        <color>0.0039 0.26 0.415 1.0</color>
         <type>linear</type>
-        <density>0.001</density>
+        <density>0.4</density>
         <start>10</start>
-        <end>200</end>
+        <end>40</end>
       </fog>
-    </scene>
+    </scene> 
 
     <!-- Origin placed somewhere in the middle of the North Sea  -->
     <spherical_coordinates>
@@ -51,12 +53,42 @@
       <longitude_deg>3.515625</longitude_deg>
     </spherical_coordinates>
 
-    <!-- Global light source -->
+    <!-- Global light source 
     <include>
       <uri>model://sun</uri>
-    </include>
+      <diffuse>250 250 250 250</diffuse>
+    </include> -->
 
-<!--Permanently placed model -->
+   <!-- Light -->
+   <light type="directional" name="sun1">
+      <cast_shadows>1</cast_shadows>
+      <pose>10 0 10 0 0 0</pose>
+      <diffuse>0.25 0.55 0.45 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>  
+
+   <light type="directional" name="sun2">
+      <cast_shadows>1</cast_shadows>
+      <pose>-10 0 10 0 0 0</pose>
+      <diffuse>0.25 0.55 0.45 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>0.5 0.1 0.9</direction>
+    </light>  
+
+    <!--Permanently placed model -->
     
     <include>
       <uri>model://cybernetics_pool</uri>
@@ -64,8 +96,22 @@
   
     <!-- Bounding box with sea surface -->
     <include>
-      <uri>model://ocean_box</uri>
+      <uri>model://cyblab_box</uri>
       <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <!-- Gate -->
+    <include>
+      <name>gate_side_a</name>
+      <pose>0.0 0.0 0.0 0 0 1.57</pose>
+      <uri>model://2018/gate</uri>
+    </include>
+
+    <!-- Buoy -->
+    <include>
+      <name>buoys</name>
+      <pose>10.0 0.0 0.0 0 0 0</pose>
+      <uri>model://buoys</uri>
     </include>
 
     <plugin name="underwater_current_plugin" filename="libuuv_underwater_current_ros_plugin.so">
