@@ -43,7 +43,7 @@
 
 2. Clone the repository: 
 	```bash
-	$  git clone https://github.com/vortexntnu/Manta-AUV.git
+	$  git clone https://github.com/vortexntnu/uuv-simulator.git
 	```
 Ps. You can also manually download the zip-folder in the up-right corner and extract the file <br />
 inside the src-folder of you workspace
@@ -55,7 +55,7 @@ inside the src-folder of you workspace
   
 4. Open a window and run Gazebo world, spawn Manta, thruster manager and navigation by executing: 
 	```bash
-	$ roslaunch roslaunch simulator_launch robosub.launch 
+	$ roslaunch roslaunch simulator_launch cybernetics_pool.launch
 	```
 
 ## Credits
