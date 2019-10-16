@@ -11,7 +11,7 @@
     <!-- List of hydrodynamic models this robot's links -->
     <link name="${namespace}/base_link">
       <!-- This flag will make the link neutrally buoyant -->
-      <neutrally_buoyant>0</neutrally_buoyant>
+      <neutrally_buoyant>0.0</neutrally_buoyant>
       <!-- Link's volume -->
       <volume>${volume}</volume>
       <!-- Link's bounding box, it is used to recalculate the immersed
