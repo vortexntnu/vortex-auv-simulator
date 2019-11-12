@@ -26,7 +26,9 @@
 	$ echo "export ROS_PACKAGE_PATH=/home/youruser/manta_ws:$ROS_PACKAGE_PATH" >> ~/.bashrc
 
 	
-3. close the current window.
+3. install the protobuf library, which is used as interface to Gazebo: $ 
+	```bash
+	$ sudo apt-get install protobuf-compiler
 
 4. Open a new window. To make sure the workspace is properly overlayed:
 	```bash
