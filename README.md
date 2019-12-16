@@ -4,6 +4,9 @@
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://uuvsimulator.github.io/)
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/uuvsimulator)
 
+![MANTA](docs/manta_underwater_robosub.png)
+
+
 ## 1. If you have ROS Kinetic installed. Create ROS workspace ##
 ###### This is necessary to be able to run the simulation package that I have created
 -------------------------
