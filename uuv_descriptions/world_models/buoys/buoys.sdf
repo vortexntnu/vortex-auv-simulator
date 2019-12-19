@@ -6,53 +6,54 @@
     <self_collide> 0 </self_collide>
     <static> 1</static>
 
-    <link name='yellow_buoy'>
-        <pose>0 0 -0.2 0 0 0</pose>
-      <visual name='yellow_vis'>
-        <geometry>
-          <sphere><radius>0.1</radius></sphere>
-        </geometry>
-        <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Yellow</name>
-          </script>
-          <diffuse>0.6 0.6 0 1</diffuse>
-        </material>
-      </visual>
-      <collision name='yellow_collide'>
-        <geometry>
-          <sphere><radius>0.1</radius></sphere>
-        </geometry>
-      </collision>
-    </link>
-
-    <link name='yellow_rod'>
+    <link name='red_rod'>
         <pose>0 0 -0.7 0 0 0</pose>
-        <visual name='yellow_rod_vis'>
+        <visual name='red_rod_vis'>
           <geometry>
             <cylinder>
-              <radius>0.01</radius>
-              <length>1.0</length>
+              <radius>0.03</radius>
+              <length>1.3</length>
             </cylinder>
           </geometry>
         <material>
           <script>
             <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/FlatBlack</name>
+            <name>Gazebo/RedBright</name>
           </script>
           <diffuse>0.3 0.3 0.3 1</diffuse>
         </material>
         </visual>
-        <collision name='yellow_rod_collide'>
+        <collision name='red_rod_collide'>
             <geometry>
                 <cylinder>
-                    <radius>0.01</radius>
+                    <radius>0.03</radius>
                     <length>1.3</length>
                 </cylinder>
             </geometry>
         </collision>
     </link>
+<!--
+    <link name='red_buoy'>
+        <pose>0 0 -0.2 0 0 0</pose>
+      <visual name='red_vis'>
+        <geometry>
+          <sphere><radius>0.05</radius></sphere>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+          <diffuse>0.6 0.6 0 1</diffuse>
+        </material>
+      </visual>
+      <collision name='red_collide'>
+        <geometry>
+          <sphere><radius>0.06</radius></sphere>
+        </geometry>
+      </collision>
+    </link> -->
+
 
   </model>
 </sdf>
