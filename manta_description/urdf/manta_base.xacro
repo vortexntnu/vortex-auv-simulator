@@ -26,7 +26,7 @@
     Vehicle's parameters (remember to enter the model parameters below)
   -->
   <!-- Mass -->
-  <xacro:property name="mass" value="30.7"/>
+  <xacro:property name="mass" value="30.9"/>
   <!-- Describing the dimensions of the vehicle's bounding box: width, length, height -->
   <xacro:property name="x_size" value="0.400"/>
   <xacro:property name="y_size" value="0.400"/>

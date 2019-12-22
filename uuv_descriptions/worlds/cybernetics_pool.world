@@ -63,7 +63,7 @@
    <light type="directional" name="sun1">
       <cast_shadows>1</cast_shadows>
       <pose>10 0 10 0 0 0</pose>
-      <diffuse>0.25 0.55 0.45 1</diffuse>
+      <diffuse>0.25 0.25 0.45 1</diffuse>
       <specular>0.2 0.2 0.2 1</specular>
       <attenuation>
         <range>1000</range>
@@ -77,7 +77,7 @@
    <light type="directional" name="sun2">
       <cast_shadows>1</cast_shadows>
       <pose>-10 0 10 0 0 0</pose>
-      <diffuse>0.25 0.55 0.45 1</diffuse>
+      <diffuse>0.25 0.35 0.45 1</diffuse>
       <specular>0.2 0.2 0.2 1</specular>
       <attenuation>
         <range>1000</range>
@@ -86,7 +86,22 @@
         <quadratic>0.001</quadratic>
       </attenuation>
       <direction>0.5 0.1 0.9</direction>
-    </light>  
+    </light> 
+
+   <light type="directional" name="sun3">
+      <cast_shadows>1</cast_shadows>
+      <pose>-25 0 5 0 0 0</pose>
+      <diffuse>0.25 0.25 0.45 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>0.5 0.1 0.9</direction>
+    </light> 
+
 
     <!--Permanently placed model -->
     
@@ -103,14 +118,14 @@
     <!-- Gate -->
     <include>
       <name>gate_side_a</name>
-      <pose>0.0 -2.0 0.0 0 0 1.57</pose>
+      <pose>-6.0 -2.0 0.0 0 0 1.57</pose>
       <uri>model://2018/gate</uri>
     </include>
 
     <!-- Buoy -->
     <include>
       <name>buoys</name>
-      <pose>10.0 0.0 0.0 0 0 0</pose>
+      <pose>14.0 0.0 0.0 0 0 0</pose>
       <uri>model://buoys</uri>
     </include>
 
