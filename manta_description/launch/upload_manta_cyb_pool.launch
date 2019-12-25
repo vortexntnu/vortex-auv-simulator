@@ -7,7 +7,7 @@
 <launch>
   <arg name="debug" default="0"/>
 
-  <arg name="x" default="-18.0"/>
+  <arg name="x" default="0.0"/>
   <arg name="y" default="0.0"/>
   <arg name="z" default="0.0"/>
   <arg name="roll" default="0.0"/>

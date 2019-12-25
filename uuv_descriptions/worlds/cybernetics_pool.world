@@ -118,14 +118,14 @@
     <!-- Gate -->
     <include>
       <name>gate_side_a</name>
-      <pose>-6.0 -2.0 0.0 0 0 1.57</pose>
+      <pose>10.0 2.0 0.0 0 0 1.57</pose>
       <uri>model://2018/gate</uri>
     </include>
 
     <!-- Buoy -->
     <include>
       <name>buoys</name>
-      <pose>14.0 0.0 0.0 0 0 0</pose>
+      <pose>-10.0 0.0 0.0 0 0 0</pose>
       <uri>model://buoys</uri>
     </include>
 
