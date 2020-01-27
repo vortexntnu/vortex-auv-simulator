@@ -1,0 +1,14 @@
+material TexturedShape/tommy_gun
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture tommy_gun.png
+      }
+    }
+  }
+}
+
