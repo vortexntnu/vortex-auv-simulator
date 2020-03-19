@@ -122,6 +122,12 @@
       <uri>model://2018/gate</uri>
     </include>
 
+    <!-- Torpedo targets -->
+    <include>
+      <name>torpedo_targets</name>
+      <pose>15.0 -1.8 -0.5 0 0 1.57</pose>
+      <uri>model://2018/torpedo_targets</uri>
+    </include> 
 
     <!-- Buoy with Tommy Gun picture-->
     <include>
