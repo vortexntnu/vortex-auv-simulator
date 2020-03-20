@@ -7,8 +7,8 @@
     <static> 1</static>
 
     <link name='target_gman'>
-      <pose>0.8 0.2 0 0 0 0</pose>
-      <visual name='target_1'>
+      <pose>0.8 0 0 0 0 0</pose>
+      <visual name='target_gman'>
         <geometry>
           <box><size>0.8 0.1 0.8</size></box>
         </geometry>
@@ -20,16 +20,45 @@
           </script>
         </material>
       </visual>
-      <collision name='target_1_collide'>
+      <collision name='target_gman_collide'>
         <geometry>
           <box><size>0.8 0.1 0.8</size></box>
         </geometry>
       </collision>
     </link>
+    <link name='gman_headshot'>
+      <pose>0.8 0.05 0.2 0 0 0</pose>
+      <visual name='gman_headshot'>
+        <geometry>
+          <box><size>0.1 0.01 0.1</size></box>
+        </geometry>
+        <material>
+            <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <link name='gman_bodyshot'>
+      <pose>0.8 0.05 -0.2 0 0 0</pose>
+      <visual name='gman_bodyshot'>
+        <geometry>
+          <box><size>0.15 0.01 0.15</size></box>
+        </geometry>
+        <material>
+            <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+    </link>
 
     <link name='target_bootlegger'>
-      <pose>2 -0.2 0 0 0 0</pose>
-      <visual name='target_1'>
+      <pose>2 0 0 0 0 0</pose>
+      <visual name='target_bootlegger'>
         <geometry>
           <box><size>0.8 0.1 0.8</size></box>
         </geometry>
@@ -41,65 +70,42 @@
           </script>
         </material>
       </visual>
-      <collision name='target_1_collide'>
+      <collision name='target_bootlegger_collide'>
         <geometry>
           <box><size>0.8 0.1 0.8</size></box>
         </geometry>
       </collision>
     </link>
-<!--
-    <link name='left_rod'>
-        <pose>-0.2 0.2 0 0 0 0</pose>
-        <visual name='red_rod_vis'>
-          <geometry>
-            <cylinder>
-              <radius>0.0381</radius>
-              <length>1.0</length>
-            </cylinder>
-          </geometry>
+
+    <link name='bootlegger_headshot'>
+      <pose>2 0.05 0.2 0 0 0</pose>
+      <visual name='bootlegger_headshot'>
+        <geometry>
+          <box><size>0.1 0.01 0.1</size></box>
+        </geometry>
         <material>
-          <script>
+            <script>
             <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/FlatBlack</name>
+            <name>Gazebo/Red</name>
           </script>
-          <diffuse>0.3 0.3 0.3 1</diffuse>
         </material>
-        </visual>
-        <collision name='red_rod_collide'>
-            <geometry>
-                <cylinder>
-                    <radius>0.01</radius>
-                    <length>1.0</length>
-                </cylinder>
-            </geometry>
-        </collision>
+      </visual>
     </link>
-    <link name='right_rod'>
-        <pose>-0.2 0 2.0 0 0 0</pose>
-        <visual name='red_rod_vis'>
-          <geometry>
-            <cylinder>
-              <radius>0.0381</radius>
-              <length>1.0</length>
-            </cylinder>
-          </geometry>
+
+    <link name='bootlegger_bodyshot'>
+      <pose>2 0.05 -0.2 0 0 0</pose>
+      <visual name='bootlegger_bodyshot'>
+        <geometry>
+          <box><size>0.15 0.01 0.15</size></box>
+        </geometry>
         <material>
-          <script>
+            <script>
             <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/FlatBlack</name>
+            <name>Gazebo/Red</name>
           </script>
-          <diffuse>0.3 0.3 0.3 1</diffuse>
         </material>
-        </visual>
-        <collision name='red_rod_collide'>
-            <geometry>
-                <cylinder>
-                    <radius>0.01</radius>
-                    <length>1.0</length>
-                </cylinder>
-            </geometry>
-        </collision>
+      </visual>
     </link>
--->
+
   </model>
 </sdf>
