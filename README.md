@@ -8,7 +8,7 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/vortexntnu/manta-auv-simulator.svg)](https://GitHub.com/vortexntnu/manta-auv-simulator/graphs/contributors/)
 [![Build Status](https://travis-ci.org/uuvsimulator/uuv_simulator.svg?branch=dev%2Ftravis_integration)](https://travis-ci.org/uuvsimulator/uuv_simulator)
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://uuvsimulator.github.io/)
-[![HitCount](http://hits.dwyl.com/vortexntnu/manta-auv-simulator.svg)](http://hits.dwyl.com/vortexntnu/manta-auv-simulator)
+![ViewCount](https://views.whatilearened.today/views/github/vortexntnu/manta-auv-simulator.svg)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/vortexntnu/manta-auv-simulator/graphs/commit-activity)
 
 ![MANTA](docs/manta_underwater_robosub.png)
