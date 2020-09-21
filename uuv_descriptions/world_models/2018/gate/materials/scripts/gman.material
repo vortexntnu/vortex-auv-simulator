@@ -1,0 +1,14 @@
+material TexturedShape/bootlegger
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture bootlegger.png
+      }
+    }
+  }
+}
+

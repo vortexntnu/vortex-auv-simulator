@@ -36,6 +36,68 @@
       </collision>
     </link>
 
+    <link name='gate_mid'>
+      <pose> 0 0 -0.25 0 0 0</pose>
+      <visual name='gate_mid_vis'>
+        <geometry>
+          <cylinder>
+            <radius>0.0381</radius>
+            <length>0.5</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Yellow</name>
+          </script>
+        </material>
+      </visual>
+      <collision name='gate_mid_collide'>
+        <geometry>
+          <cylinder>
+            <radius>0.0381</radius>
+            <length>0.5</length>
+          </cylinder>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name='box_gman'>
+      <pose> -0.5 0 -0.4 0 0 0</pose>
+      <visual name='box_gman_vis'>
+        <geometry>
+          <box>
+            <size>0.5 0.01 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://2018/gate/materials/scripts</uri>
+            <uri>model://2018/gate/materials/textures</uri>
+            <name>TexturedShape/gman</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <link name='box_bootlegger'>
+      <pose> 0.5 0 -0.4 0 0 0</pose>
+      <visual name='box_bootlegger_vis'>
+        <geometry>
+          <box>
+            <size>0.5 0.01 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://2018/gate/materials/scripts</uri>
+            <uri>model://2018/gate/materials/textures</uri>
+            <name>TexturedShape/bootlegger</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
     <link name='gate_left'>
       <pose>-1.0 0 -0.75 0 0 0</pose>
       <visual name='gate_left_top'>
