@@ -14,7 +14,7 @@
 ![MANTA](docs/manta_underwater_robosub.png)
 
 
-## 1. If you have ROS Kinetic installed. Create ROS workspace ##
+## 1. If you have ROS Melodic installed. Create ROS workspace ##
 ###### This is necessary to be able to run the simulation package that I have created
 -------------------------
 
@@ -43,7 +43,7 @@
 4. Open a new window. To make sure the workspace is properly overlayed:
 	```bash
 	$ echo $ROS_PACKAGE_PATH
-	  /home/youruser/manta_ws/src:/opt/ros/kinetic/share 
+	  /home/youruser/manta_ws/src:/opt/ros/melodic/share 
 
 
 ## 2. How to run the simulation ##
@@ -55,7 +55,7 @@
 
 2. Clone the repository: 
 	```bash
-	$  git clone https://github.com/vortexntnu/uuv-simulator.git
+	$  git clone https://github.com/vortexntnu/manta-auv-simulator
 	```
 Ps. You can also manually download the zip-folder in the up-right corner and extract the file <br />
 inside the src-folder of you workspace
@@ -67,7 +67,7 @@ inside the src-folder of you workspace
   
 4. Open a window and run Gazebo world, spawn Manta, thruster manager and navigation by executing: 
 	```bash
-	$ roslaunch roslaunch simulator_launch cybernetics_pool.launch
+	$ roslaunch simulator_launch cybernetics_pool.launch
 	```
 
 ## Credits
