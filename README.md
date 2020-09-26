@@ -21,142 +21,16 @@ The README is almost identical to Vortex-AUV's README: https://github.com/vortex
 Linux distributions Bionic (Ubuntu 18.04) <br />
 C++ 11 compiler or newer.
 
-## 1. Install ROS melodic for Ubuntu (If you do not have it already) ##
+## Note: The simulator depends on ROS Melodic and Vortex-AUV
+##### Install these if you do not have it already!
 
-###### This should take no more than 3 minutes. If you have another version of linux but Ubuntu, follow this guide: http://wiki.ros.org/melodic/Installation/Ubuntu. It is very important that you follow the installation guide and instructions on how to run the guide EXACTLY as stated or you will get running errors. Simply copy and paste the commands to your terminal command window ######
+Installation guide for Vortex-AUV and ROS Melodic: https://github.com/vortexntnu/Vortex-AUV
 
-Robot operating system (ROS) provides services designed for heterogeneous computer cluster such as hardware abstraction, low-level device control, implementation of commonly used functionality, message-passing between processes, and package management. The main ROS client libraries (C++, Python, and Lisp) are geared toward a Unix-like system, primarily because of their dependence on large collections of open-source software dependencies.
+Further documentation for ROS Melodic: http://wiki.ros.org/melodic
 
-
--------------------------
-
-1. Setup your computer to accept software from packages.ros.org:
-	```bash
-	$ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-	```
-
-2. Set up your keys:
-	```bash
-	$ sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-	```
-
-3. Update:
-	```bash
-	$ sudo apt-get update
+## 1. Download and build the customized UUV simulator for Manta AUV ##
+###### Assuming that ROS Melodic and Vortex-AUV is installed!
   
-4. Installation:
-	```bash
-	$ sudo apt install ros-melodic-desktop-full
-	```
-
-5. Before you can use ROS, you will need to initialize rosdep: 
-	```bash
-	$ sudo rosdep init
-	$ rosdep update
-  
-
-6. Environment setup:
-	```bash
-	$ echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-	$ source ~/.bashrc
-
-## 2. Install the necessary dependencies to interface with drivers, Gazebo etc. ##
--------------------------
-
-Quick command for installing all dependencies:  
-```
-sudo apt install protobuf-compiler ros-melodic-rosbridge-server ros-melodic-message-to-tf ros-melodic-geographic-msgs ros-melodic-move-base ros-melodic-move-base-msgs 
-```
-
-Explainations for the dependencies: 
-
-1. Install the protobuf library, which is used as interface to Gazebo.:
-	```bash
-	$ sudo apt-get install protobuf-compiler
-
-2. Install rosbridge-server to interface with sensor and actuator drivers on the physical Manta.
-	```bash
-	$ sudo apt-get install ros-melodic-rosbridge-server
-  
-3. Install tf. tf is a package that lets the user keep track of multiple coordinate frames over time:
-	```bash
-	$ sudo apt-get install ros-melodic-message-to-tf
-
-4. Install tf. tf is a package that lets the user keep track of multiple coordinate frames over time:
-	```bash
-	$ sudo apt-get install ros-melodic-geographic-msgs
-
-5. Install move-base-msgs. This is necessary to perform some actions:
-	```bash
-	$ sudo apt-get install ros-melodic-move-base
-	$ sudo apt-get install ros-melodic-move-base-msgs 
-
-## 3. Now that you have ROS Melodic installed. Create ROS workspace ##
-###### This is necessary to be able to run the simulation package
--------------------------
-
-1. Creating a catkin workspace:
-	```bash
-	$ mkdir -p ~/manta_ws/src
-	$ cd ~/manta_ws
-	$ catkin_init_workspace
-	```
-
-2. Building the workspace created:
-	```bash
-	$ cd ~/manta_ws/
-	$ catkin build
-	```
-Note: if you get the error message "catkin: command not found", run the following command:
-
-	```bash
-	$ sudo apt-get install python-catkin-tools
-	```
-
-
-3. Source the current workspace and Gazebo model:
-	```bash
-	$ echo "source manta_ws/devel/setup.bash" >> ~/.bashrc
-	$ echo "export GAZEBO_MODEL_PATH=/home/youruser/manta_ws/src/manta_gazebo:$GAZEBO_MODEL_PATH" >> ~/.bashrc 
-	$ echo "export ROS_PACKAGE_PATH=/home/youruser/manta_ws:$ROS_PACKAGE_PATH" >> ~/.bashrc
-	```
-	
-4. Install the protobuf library, which is used as interface to Gazebo:
-	```bash
-	$ sudo apt-get install protobuf-compiler
-	```bash
-	
-5. Close the current terminal.
-
-6. Open a new terminal window. To make sure the workspace is properly overlayed:
-	```bash
-	$ echo $ROS_PACKAGE_PATH
-	  /home/youruser/manta_ws/src:/opt/ros/melodic/share 
-	```
-
-## 4. Download and build Manta V1 ##
--------------------------
-1. Enter the folder where you want to clone the repostory:
-	```bash
-	$ cd manta_ws/src
-	```
-
-2. Clone the repositories: 
-	```bash
-	$  git clone https://github.com/vortexntnu/manta-auv.git
-	$  git clone https://github.com/vortexntnu/vortex_msgs.git
-	```
-
-Ps. Can also be manually download the zip-folder in the up-right corner and extract the file <br />
-inside the src-folder of you workspace
-
-3. Compile the code by running "catkin build" inside the workspace:
-	```bash
-	$ cd ~/manta_ws/
-	$ catkin build vortex_msgs
-	$ catkin build
-  
-## 5. Download and build the customized UUV simulator for Manta AUV ##
 -------------------------
 
 ![MANTA](docs/manta_underwater_robosub.png)
@@ -165,35 +39,35 @@ Figure by: Kristoffer Rakstad Solberg
 
 1. Enter the folder where you want to clone the repostory:
 	```bash
-	$ cd manta_ws/src
+	cd manta_ws/src
 	```
 
 2. Clone the repository: 
 	```bash
-	$ git clone https://github.com/vortexntnu/manta-auv-simulator.git
+	git clone https://github.com/vortexntnu/manta-auv-simulator.git
 	```
 
 3. Compile the code by running "catkin build" inside the workspace:
 	```bash
-	$ cd ~/manta_ws/
-	$ catkin build
+	cd ~/manta_ws/
+	catkin build
 	```
-## 6. Run Manta V1 in Simulation with Gazebo, Smach viewer, Camera pop-up windows etc ##
+## 2. Run Manta V1 in Simulation with Gazebo, Smach viewer, Camera pop-up windows etc ##
 -------------------------
 
 1. Open a new terminal and run your simulation world. This will upload Manta (w/ sensor, camera, thrusters etc.) and launch robot localization as well. i.e :
 	```bash
-	$ roslaunch simulator_launch cybernetics_pool.launch
+	roslaunch simulator_launch cybernetics_pool.launch
 	```
 
 2. Launch all modules required for operating Manta:
 	```bash
-	$ roslaunch vortex manta_simulator.launch
+	roslaunch vortex manta_simulator.launch
 	```
 
 2. Execute your state machine of choice. i.e: 
 	```bash
-	$ roslaunch finite_state_machine simtest.launch
+	roslaunch finite_state_machine simtest.launch
 	```
 
 
