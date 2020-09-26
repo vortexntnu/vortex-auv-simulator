@@ -13,62 +13,63 @@
 
 ![MANTA](docs/manta_underwater_robosub.png)
 
+## Note ##
+The README is almost identical to Vortex-AUV's README: https://github.com/vortexntnu/Vortex-AUV
 
-## 1. If you have ROS Melodic installed. Create ROS workspace ##
-###### This is necessary to be able to run the simulation package that I have created
+## Prerequisites ##
+
+Linux distributions Bionic (Ubuntu 18.04) <br />
+C++ 11 compiler or newer.
+
+## Note: The simulator depends on ROS Melodic and Vortex-AUV
+##### Install these if you do not have it already!
+
+Installation guide for Vortex-AUV and ROS Melodic: https://github.com/vortexntnu/Vortex-AUV
+
+Further documentation for ROS Melodic: http://wiki.ros.org/melodic
+
+## 1. Download and build the customized UUV simulator for Manta AUV ##
+###### Assuming that ROS Melodic and Vortex-AUV is installed!
+  
 -------------------------
 
-1. creating a catkin workspace:
-	```bash
-	$ mkdir -p ~/manta_ws/src
-	$ cd ~/manta_ws/src
-	$ catkin_init_workspace
-  
-2. building the workspace created:
-	```bash
-	$ cd ~/manta_ws/
-	$ catkin build
-  
-3. source the current workspace and Gazebo model:
-	```bash
-	$ echo "source manta_ws/devel/setup.bash" >> ~/.bashrc
-	$ echo "export GAZEBO_MODEL_PATH=/home/youruser/manta_ws/src/manta_gazebo:$GAZEBO_MODEL_PATH" >> ~/.bashrc 
-	$ echo "export ROS_PACKAGE_PATH=/home/youruser/manta_ws:$ROS_PACKAGE_PATH" >> ~/.bashrc
+![MANTA](docs/manta_underwater_robosub.png)
 
-	
-3. install the protobuf library, which is used as interface to Gazebo: $ 
-	```bash
-	$ sudo apt-get install protobuf-compiler
+Figure by: Kristoffer Rakstad Solberg
 
-4. Open a new window. To make sure the workspace is properly overlayed:
-	```bash
-	$ echo $ROS_PACKAGE_PATH
-	  /home/youruser/manta_ws/src:/opt/ros/melodic/share 
-
-
-## 2. How to run the simulation ##
--------------------------
 1. Enter the folder where you want to clone the repostory:
 	```bash
-	$ cd manta_ws/src
+	cd manta_ws/src
 	```
 
 2. Clone the repository: 
 	```bash
-	$  git clone https://github.com/vortexntnu/manta-auv-simulator
+	git clone https://github.com/vortexntnu/manta-auv-simulator.git
 	```
-Ps. You can also manually download the zip-folder in the up-right corner and extract the file <br />
-inside the src-folder of you workspace
 
 3. Compile the code by running "catkin build" inside the workspace:
 	```bash
-	$ cd ~/manta_ws/
-	$ catkin build
-  
-4. Open a window and run Gazebo world, spawn Manta, thruster manager and navigation by executing: 
-	```bash
-	$ roslaunch simulator_launch cybernetics_pool.launch
+	cd ~/manta_ws/
+	catkin build
 	```
+## 2. Run Manta V1 in Simulation with Gazebo, Smach viewer, Camera pop-up windows etc ##
+-------------------------
+
+1. Open a new terminal and run your simulation world. This will upload Manta (w/ sensor, camera, thrusters etc.) and launch robot localization as well. i.e :
+	```bash
+	roslaunch simulator_launch cybernetics_pool.launch
+	```
+
+2. Launch all modules required for operating Manta:
+	```bash
+	roslaunch vortex manta_simulator.launch
+	```
+
+2. Execute your state machine of choice. i.e: 
+	```bash
+	roslaunch finite_state_machine simtest.launch
+	```
+
 
 ## Credits
 
