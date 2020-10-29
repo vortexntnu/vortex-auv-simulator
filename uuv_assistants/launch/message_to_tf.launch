@@ -2,7 +2,7 @@
 <launch>
   <arg name="namespace" default="rexrov"/>
   <arg name="world_frame" default="world"/>
-  <arg name="child_frame_id" default="/$(arg namespace)/base_link"/>
+  <arg name="child_frame_id" default="/$(arg namespace)/base_link_ground_truth"/>
   <arg name="odometry_topic" default="/$(arg namespace)/pose_gt"/>
 
   <group ns="$(arg namespace)">
