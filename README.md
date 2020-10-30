@@ -55,14 +55,14 @@ Figure by: Kristoffer Rakstad Solberg
 ## 2. Run Manta V1 in Simulation with Gazebo, Smach viewer, Camera pop-up windows etc ##
 -------------------------
 
-1. Open a new terminal and run your simulation world. This will upload Manta (w/ sensor, camera, thrusters etc.) and launch robot localization as well. i.e :
+1. Open a new terminal and launch a simulation. This will upload Manta (w/ sensor, camera, thrusters etc.) and launch robot localization as well. i.e :
 	```bash
-	roslaunch simulator_launch cybernetics_pool.launch
+	roslaunch simulator_launch cybernetics_sim.launch
 	```
 
 2. Launch all modules required for operating Manta:
 	```bash
-	roslaunch vortex manta_simulator.launch
+	roslaunch auv_setup manta_simulator.launch
 	```
 
 2. Execute your state machine of choice. i.e: 
@@ -70,6 +70,11 @@ Figure by: Kristoffer Rakstad Solberg
 	roslaunch finite_state_machine simtest.launch
 	```
 
+Currently builtin simulator launches (worlds):
+- basin_sim
+- cybernetics_sim
+- robosub_sim
+- vortex_sim
 
 ## Credits
 
