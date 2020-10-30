@@ -80,7 +80,7 @@
   </library_geometries>
   <library_visual_scenes>
     <visual_scene id="myScene" name="myScene">
-      <node id="<STL_BINARY>" name="<STL_BINARY>">
+      <node id="STL_BINARY" name="STL_BINARY">
         <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
         <instance_geometry url="#meshId0">
           <bind_material>
