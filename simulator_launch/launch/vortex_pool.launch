@@ -1,9 +1,21 @@
 <?xml version="1.0" ?>
 <launch>
-  <include file="$(find uuv_descriptions)/launch/vortex.launch"/>
-  <include file="$(find manta_description)/launch/upload_manta.launch"/>
+  <arg name="gui" default="true"/>
+  <arg name="camerafront" default="1"/>
+  <arg name="cameraunder" default="0"/>
+  
+  <include file="$(find uuv_descriptions)/launch/vortex_pool.launch">
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+  
+  <include file="$(find manta_description)/launch/upload_manta.launch">
+    <arg name="camerafront" value="$(arg camerafront)"/>
+    <arg name="cameraunder" value="$(arg cameraunder)"/>
+  </include>
+  
   <include file="$(find manta_thruster_manager)/launch/thruster_manager.launch"/>
-  <include file="$(find navigation_launch)/launch/navigation.launch"/> 
+  <include file="$(find navigation_launch)/launch/navigation.launch"/>
+
   <!--  <include file="$(find vortex)/launch/pc.launch"/> 
   <include file="$(find vortex)/launch/dp_control.launch"/> -->
 <!--	
@@ -12,4 +24,4 @@
  <node pkg="rosbag" type="record" name="rosbag_record_pose"
        args="record /odometry/filtered /manta/pose_gt"/>  -->
  
-</launch>
+</launch>			
