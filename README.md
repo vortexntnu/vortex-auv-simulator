@@ -59,7 +59,19 @@ Figure by: Kristoffer Rakstad Solberg
 	```bash
 	roslaunch simulator_launch cybernetics_sim.launch
 	```
+Builtin arguments:
+| Argument    	| Type 	| Default 	| Description                      	|
+|-------------	|------	|---------	|----------------------------------	|
+| gui         	| bool 	| true    	| Enable/Disable Gazebo GUI        	|
+| camerafront 	| bool 	| true    	| Enable/Disable Front Camera view 	|
+| cameraunder 	| bool 	| false   	| Enable/Disable Under Camera view 	|
 
+Builtin simulator worlds:
+- basin_sim.launch
+- cybernetics_sim.launch
+- robosub_sim.launch
+- vortex_sim.launch
+	
 2. Launch all modules required for operating Manta:
 	```bash
 	roslaunch auv_setup manta_simulator.launch
@@ -69,12 +81,6 @@ Figure by: Kristoffer Rakstad Solberg
 	```bash
 	roslaunch finite_state_machine simtest.launch
 	```
-
-Currently builtin simulator launches (worlds):
-- basin_sim
-- cybernetics_sim
-- robosub_sim
-- vortex_sim
 
 ## Credits
 
