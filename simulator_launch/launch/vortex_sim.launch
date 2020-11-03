@@ -3,9 +3,15 @@
   <arg name="gui" default="true"/>
   <arg name="camerafront" default="1"/>
   <arg name="cameraunder" default="0"/>
+  <arg name="paused" default="false"/>
+  <arg name="set_timeout" default="false"/>
+  <arg name="timeout" default="0.0"/>
   
   <include file="$(find uuv_descriptions)/launch/vortex_pool.launch">
     <arg name="gui" value="$(arg gui)"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="set_timeout" value="$(arg set_timeout)"/>
+    <arg name="timeout" value="$(arg timeout)"/>
   </include>
   
   <include file="$(find manta_description)/launch/upload_manta.launch">
