@@ -20,7 +20,6 @@
   </include>
   
   <include file="$(find manta_thruster_manager)/launch/thruster_manager.launch"/>
-  <include file="$(find navigation_launch)/launch/navigation.launch"/>
 
   <!--  <include file="$(find vortex)/launch/pc.launch"/> 
   <include file="$(find vortex)/launch/dp_control.launch"/> -->
