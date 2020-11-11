@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#! /bin/bash
 
-POOL="cybernetics_pool"
+WORLD="cybernetics_sim"
 # BUILTIN WORLDS:
-# cybernetics_pool
-# basin_pool
-# vortex_pool
-# robosub_pool
+# cybernetics_sim
+# basin_sim
+# vortex_sim
+# robosub_sim
 
 FSM="simtest"
 # BUILTIN FSMs:
@@ -21,6 +21,8 @@ CAMERAUNDER=0
 PAUSED=0
 SET_TIMEOUT=0
 TIMEOUT=0.0
+
+SLEEP_TIME=3
 
 POSITIONAL=()
 while [[ $# -gt 0 ]]
@@ -62,6 +64,11 @@ case $key in
     shift
     shift
     ;;
+    -s|--sleep)
+    SLEEP_TIME="$2"
+    shift
+    shift
+    ;;
     --fsm)
     FSM="$2"
     shift
@@ -72,20 +79,36 @@ case $key in
     ;;
 esac
 done
-
 set -- "${POSITIONAL[@]}"
 
-( roslaunch simulator_launch combined_launch.launch gui:=${GUI} camerafront:=${CAMERAFRONT} cameraunder:=${CAMERAUNDER} paused:=${PAUSED} set_timeout:=${SET_TIMEOUT} timeout:=${TIMEOUT} pool:=${POOL}) &
-SIM_PID=$!
-( sleep 5 ; roslaunch finite_state_machine ${FSM}.launch) &
+echo ""
+echo ""
+echo "WORLD: ${WORLD}"
+echo "FSM: ${FSM}"
+echo ""
+echo "GUI: ${GUI}"
+echo "CAMERAFRONT: ${CAMERAFRONT}"
+echo "CAMERAUNDER: ${CAMERAUNDER}"
+echo ""
+echo "PAUSED: ${PAUSED}"
+echo "SET_TIMEOUT: ${SET_TIMEOUT}"
+echo "TIMEOUT: ${TIMEOUT}"
+echo ""
+echo "SLEEP_TIME: ${SLEEP_TIME}"
+echo ""
+echo ""
 
-sleep 6
+( roslaunch simulator_launch ${WORLD}.launch gui:=${GUI} camerafront:=${CAMERAFRONT} cameraunder:=${CAMERAUNDER} paused:=${PAUSED} set_timeout:=${SET_TIMEOUT} timeout:=${TIMEOUT} ) &
+( sleep "$SLEEP_TIME" ; roslaunch auv_setup auv.launch type:=simulator ) &
+( sleep `expr "$SLEEP_TIME" + "$SLEEP_TIME"` ; roslaunch finite_state_machine ${FSM}.launch) &
+
+sleep `expr "$SLEEP_TIME" + "$SLEEP_TIME" + 5`
 while sleep 7
 do
     if ! ( rosnode list | fgrep --quiet "$FSM" )
     then
         echo "Finite State Machine terminated. Killing ROS nodes."
-        kill "$SIM_PID"
+        killall -w roslaunch gzserver gazebo gazebo_gui
         break
     fi
 done

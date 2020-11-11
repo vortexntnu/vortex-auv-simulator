@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#! /bin/bash
 
 WORLD="cybernetics_sim"
 # BUILTIN WORLDS:
@@ -21,6 +21,8 @@ CAMERAUNDER=0
 PAUSED=0
 SET_TIMEOUT=0
 TIMEOUT=0.0
+
+SLEEP_TIME=3
 
 POSITIONAL=()
 while [[ $# -gt 0 ]]
@@ -62,6 +64,11 @@ case $key in
     shift
     shift
     ;;
+    -s|--sleep)
+    SLEEP_TIME="$2"
+    shift
+    shift
+    ;;
     --fsm)
     FSM="$2"
     shift
@@ -74,7 +81,24 @@ esac
 done
 set -- "${POSITIONAL[@]}"
 
-( sleep 5 ; roslaunch finite_state_machine ${FSM}.launch) &
-( sleep 3 ; roslaunch auv_setup manta_simulator.launch ) &
+echo ""
+echo ""
+echo "WORLD: ${WORLD}"
+echo "FSM: ${FSM}"
+echo ""
+echo "GUI: ${GUI}"
+echo "CAMERAFRONT: ${CAMERAFRONT}"
+echo "CAMERAUNDER: ${CAMERAUNDER}"
+echo ""
+echo "PAUSED: ${PAUSED}"
+echo "SET_TIMEOUT: ${SET_TIMEOUT}"
+echo "TIMEOUT: ${TIMEOUT}"
+echo ""
+echo "SLEEP_TIME: ${SLEEP_TIME}"
+echo ""
+echo ""
+
+( sleep `expr "$SLEEP_TIME" + "$SLEEP_TIME"` ; roslaunch finite_state_machine ${FSM}.launch) &
+( sleep "$SLEEP_TIME" ; roslaunch auv_setup auv.launch type:=simulator) &
 ( roslaunch simulator_launch ${WORLD}.launch gui:=${GUI} camerafront:=${CAMERAFRONT} cameraunder:=${CAMERAUNDER} paused:=${PAUSED} set_timeout:=${SET_TIMEOUT} timeout:=${TIMEOUT} ) &&
 fg

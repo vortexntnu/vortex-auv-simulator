@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#! /bin/bash
 
 POOL="cybernetics_pool"
 # BUILTIN WORLDS:
@@ -21,6 +21,8 @@ CAMERAUNDER=0
 PAUSED=0
 SET_TIMEOUT=0
 TIMEOUT=0.0
+
+SLEEP_TIME=5
 
 MATCH="[${FSM}-1] process has finished cleanly"
 
@@ -64,6 +66,11 @@ case $key in
     shift
     shift
     ;;
+    -s|--sleep)
+    SLEEP_TIME="$2"
+    shift
+    shift
+    ;;
     --fsm)
     FSM="$2"
     shift
@@ -76,7 +83,26 @@ esac
 done
 set -- "${POSITIONAL[@]}"
 
+echo ""
+echo ""
+echo "POOL: ${POOL}"
+echo "FSM: ${FSM}"
+echo ""
+echo "GUI: ${GUI}"
+echo "CAMERAFRONT: ${CAMERAFRONT}"
+echo "CAMERAUNDER: ${CAMERAUNDER}"
+echo ""
+echo "PAUSED: ${PAUSED}"
+echo "SET_TIMEOUT: ${SET_TIMEOUT}"
+echo "TIMEOUT: ${TIMEOUT}"
+echo ""
+echo "SLEEP_TIME: ${SLEEP_TIME}"
+echo ""
+echo "MATCH: ${MATCH}"
+echo ""
+echo ""
+
 ( roslaunch simulator_launch combined_launch.launch gui:=${GUI} camerafront:=${CAMERAFRONT} cameraunder:=${CAMERAUNDER} paused:=${PAUSED} set_timeout:=${SET_TIMEOUT} timeout:=${TIMEOUT} pool:=${POOL} ) &
 SIM_PID=$!
-( sleep 5 ; roslaunch finite_state_machine ${FSM}.launch | if tee >( fgrep -q "$MATCH" ) ; then kill "$SIM_PID"; fi) &&
+( "$SLEEP_TIME" ; roslaunch finite_state_machine ${FSM}.launch | if tee >( fgrep -q "$MATCH" ) ; then kill "$SIM_PID"; fi) &&
 fg
