@@ -28,8 +28,8 @@ while [[ $# -gt 0 ]]
 do
 key="$1"
 case $key in
-    -w|--world)
-    WORLD="$2"
+    --pool)
+    POOL="$2"
     shift
     shift
     ;;
