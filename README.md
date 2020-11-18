@@ -113,11 +113,6 @@ ROS launch arguments:
 | set_timeout | bool   | false            | Enable timeout of Simulation (stop runtime)          |
 | timeout     | float  | 0.0              | Set the runtime period (only if set_timeout is true) |
 	
-2. Launch all modules required for operating Manta:
-	```bash
-	roslaunch auv_setup auv.launch
-	```
-
 2. Execute your state machine of choice. i.e: 
 	```bash
 	roslaunch finite_state_machine simtest.launch
