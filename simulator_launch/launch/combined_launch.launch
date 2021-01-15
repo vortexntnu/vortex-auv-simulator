@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="gui" default="true"/>
+  <arg name="camerafront" default="1"/>
+  <arg name="cameraunder" default="0"/>
+  <arg name="paused" default="false"/>
+  <arg name="set_timeout" default="false"/>
+  <arg name="timeout" default="0.0"/>
+  <arg name="pool" default="cybernetics_pool"/>
+
+  
+  <include file="$(find uuv_descriptions)/launch/$(arg pool).launch">
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="set_timeout" value="$(arg set_timeout)"/>
+    <arg name="timeout" value="$(arg timeout)"/>
+  </include>
+  
+  <include file="$(find manta_description)/launch/upload_manta.launch">
+    <arg name="camerafront" value="$(arg camerafront)"/>
+    <arg name="cameraunder" value="$(arg cameraunder)"/>
+  </include>
+  
+  <include file="$(find manta_thruster_manager)/launch/thruster_manager.launch"/>
+
+  <include file="$(find auv_setup)/launch/auv.launch" >
+  <arg name="type" value="simulator"/>
+  </include>
+
+  <!--  <include file="$(find vortex)/launch/pc.launch"/> 
+  <include file="$(find vortex)/launch/dp_control.launch"/> -->
+<!--	
+   <arg name="record_pose" default="true" />
+
+ <node pkg="rosbag" type="record" name="rosbag_record_pose"
+       args="record /odometry/filtered /manta/pose_gt"/>  -->
+ 
+</launch>			
