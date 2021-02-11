@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <!-- Name of the robot model  -->
-  <arg name="model_name" default="manta"/>
+  <arg name="model_name" default="auv"/>
   <!-- Namespace of the robot in the simulation (it can be different from the original model name) -->
   <arg name="uuv_name" default="$(arg model_name)"/>
   <!-- Name of the base link -->
