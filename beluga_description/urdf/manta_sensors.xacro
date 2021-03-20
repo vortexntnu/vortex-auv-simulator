@@ -11,7 +11,7 @@
     namespace="${namespace}"
     parent_link="${namespace}/base_link"
     inertial_reference_frame="${inertial_reference_frame}">
-    <origin xyz="0 0 0" rpy="0 ${0.5*pi} 0"/>
+    <origin xyz="0.074 -0.015 -0.115" rpy="-3.14 1.57 -3.14"/>
   </xacro:default_dvl_macro> 
 
   <!-- Magnetometer  -->
@@ -38,11 +38,11 @@
     parent_link="${namespace}/base_link"
     inertial_reference_frame="${inertial_reference_frame}">
     <origin xyz="0 0 0" rpy="0 0 0"/>
-  </xacro:default_imu_macro>
+  </xacro:default_imu_macro>	
 
   <!-- Mount a camera -->
   <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="front">
-    <origin xyz="0.29 0.0 0." rpy="0 0 0"/>
+    <origin xyz="0.349 0.0 0.058" rpy="0.01 0.18 -0.005"/>
   </xacro:default_camera>
   
   <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="under">

@@ -40,6 +40,7 @@ from std_srvs.srv import Empty
 from geometry_msgs.msg import Point, Pose, Quaternion, Twist, Wrench
 import tf.transformations as tft
 
+print("R.I.P Gladlaks, F to pay respect")
 
 try:
     import pymap3d

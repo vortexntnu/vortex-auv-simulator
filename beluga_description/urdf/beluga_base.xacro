@@ -52,11 +52,11 @@
   -->
 
   <!-- Parameters -->
-  <xacro:property name="namespace" value="gladlaks"/>
-  <xacro:property name="visual_mesh_file" value="file://$(find gladlaks_description)/mesh/Gladlaks_centered_body.dae"/>
+  <xacro:property name="namespace" value="beluga"/>
+  <xacro:property name="visual_mesh_file" value="file://$(find beluga_description)/mesh/beluga_centered_body.dae"/>
 
 
-  <xacro:macro name="gladlaks_base" params="namespace *gazebo inertial_reference_frame">
+  <xacro:macro name="beluga_base" params="namespace *gazebo inertial_reference_frame">
    <!-- Rigid body description of the base link -->
     <link name="${namespace}/base_link">
         <!--
@@ -109,13 +109,13 @@
     all the thrusters of the robot. if you run your controller the model will then
     receive topics on all its thrusters. The robot will not move just by launching
     this file alone -->
-  <xacro:include filename="$(find gladlaks_description)/urdf/gladlaks_actuators.xacro"/>
+  <xacro:include filename="$(find beluga_description)/urdf/beluga_actuators.xacro"/>
 
    <!-- Publishes -->
    <!-- ONLY NEED FOR SIMULATIONS (GAZEBO SPECIFIC) 
      This .xacro file has to run to be able to move the robot when controller
      commands have been sent to the thrusters-->
-  <xacro:include filename="$(find gladlaks_description)/urdf/manta_sensors.xacro"/>
+  <xacro:include filename="$(find beluga_description)/urdf/manta_sensors.xacro"/>
 
   </xacro:macro>
 

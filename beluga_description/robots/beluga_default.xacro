@@ -20,11 +20,11 @@
   <xacro:arg name="namespace" default="manta"/>
   <xacro:arg name="inertial_reference_frame" default="world"/>
   <!-- Include the ROV macro file -->
-  <xacro:include filename="$(find gladlaks_description)/urdf/gladlaks_base.xacro"/>
+  <xacro:include filename="$(find beluga_description)/urdf/beluga_base.xacro"/>
   <xacro:include filename="$(find manta_description)/urdf/manta_gazebo.xacro"/>
 
   <!-- Create the rexrov -->
-  <xacro:gladlaks_base
+  <xacro:beluga_base
     namespace="$(arg namespace)"
     inertial_reference_frame="$(arg inertial_reference_frame)">
     <!-- The underwater object plugin is given as an input block parameter to
@@ -38,7 +38,7 @@
         <xacro:manta_hydro_model namespace="$(arg namespace)"/>
       </plugin>
     </gazebo>
-  </xacro:gladlaks_base>
+  </xacro:beluga_base>
 
   <!-- Joint state publisher plugin -->
   <xacro:default_joint_state_publisher namespace="$(arg namespace)" update_rate="50"/>

@@ -7,7 +7,7 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="gladlaks_hydro_model" params="namespace">
+  <xacro:macro name="beluga_hydro_model" params="namespace">
     <!-- List of hydrodynamic models this robot's links -->
     <link name="${namespace}/base_link">
       <!-- This flag will make the link neutrally buoyant -->
