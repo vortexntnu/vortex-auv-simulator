@@ -24,9 +24,7 @@
     sure to keep the thruster allocation matrix stored in a TAM.yaml to
     improve the initialization of the thruster manager.
     To generate the TAM.yaml, start the simulation with the vehicle and run:
-
     >> roslaunch manta_control start_thruster_manager.launch reset_tam:=true
-
     The TAM.yaml file will be store in the folder defined by the following
     argument output_dir
   -->
