@@ -35,6 +35,12 @@
   </include>
 </group>
   <include file="$(find manta_thruster_manager)/launch/thruster_manager.launch"/>
+<include file ="$(find simulator_launch)/launch/quick_reset.launch">
+</include>
+<group ns="quick_reset">
+  <node name="reset" pkg="finite_state_machine" output="screen" type="quick_reset.py"/>
+</group>
+  
 
   <!--  <include file="$(find vortex)/launch/pc.launch"/>
   <include file="$(find vortex)/launch/dp_control.launch"/> -->
