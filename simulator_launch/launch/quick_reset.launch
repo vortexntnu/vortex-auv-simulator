@@ -6,42 +6,42 @@
   <arg name="guidance_ns" default="guidance"/>
   <arg name="thrust_ns" default="thrust"/>
   <group ns="$(arg guidance_ns)">
-    <node name="move" pkg="finite_state_machine" output="screen" type="fsm_restart.py"/>
+    <node name="move" pkg="finite_state_machine"  type="fsm_restart.py"/>
   </group>
   <group ns="$(arg controller_ns)">
-    <node name ="dp" pkg ="finite_state_machine" output="screen" type="fsm_restart.py"/>
+    <node name ="dp" pkg ="finite_state_machine"  type="fsm_restart.py"/>
   </group>
   <group ns="$(arg controller_ns)">
-    <node name="los_controller"   pkg="finite_state_machine"    output="screen" type="fsm_restart.py"/>
+    <node name="los_controller"   pkg="finite_state_machine"     type="fsm_restart.py"/>
   </group>
   <group ns="/">
-    <node name="ekf_se"   pkg="finite_state_machine"    output="screen" type="fsm_restart.py"/>
+    <node name="ekf_se"   pkg="finite_state_machine"     type="fsm_restart.py"/>
   </group>
   <group ns="/">
-    <node name="rosapi"   pkg="finite_state_machine"    output="screen" type="fsm_restart.py"/>
+    <node name="rosapi"   pkg="finite_state_machine"     type="fsm_restart.py"/>
   </group>
   <group ns="/">
-    <node name="rosbridge_websocket"   pkg="finite_state_machine"    output="screen" type="fsm_restart.py"/>
+    <node name="rosbridge_websocket"   pkg="finite_state_machine"     type="fsm_restart.py"/>
   </group>
   <group ns="/">
-    <node name="underwater_odom_node"   pkg="finite_state_machine"    output="screen" type="fsm_restart.py"/>
+    <node name="underwater_odom_node"   pkg="finite_state_machine"     type="fsm_restart.py"/>
   </group>
   <group ns="$(arg fsm_ns)">
-    <node name="pooltest"   pkg="finite_state_machine"    output="screen" type="fsm_restart.py"/>
+    <node name="pooltest"   pkg="finite_state_machine"     type="fsm_restart.py"/>
   </group>
   <group ns="$(arg guidance_ns)">
-    <node name="dp"   pkg="finite_state_machine"    output="screen" type="fsm_restart.py"/>
+    <node name="dp"   pkg="finite_state_machine"     type="fsm_restart.py"/>
   </group>
   <group ns="$(arg guidance_ns)">
-    <node name="interface"   pkg="finite_state_machine"    output="screen" type="fsm_restart.py"/>
+    <node name="interface"   pkg="finite_state_machine"     type="fsm_restart.py"/>
   </group>
   <group ns="$(arg guidance_ns)">
-    <node name="joystick"   pkg="finite_state_machine"    output="screen" type="fsm_restart.py"/>
+    <node name="joystick"   pkg="finite_state_machine"     type="fsm_restart.py"/>
   </group>
   <group ns="$(arg guidance_ns)">
-    <node name="los"   pkg="finite_state_machine"    output="screen" type="fsm_restart.py"/>
+    <node name="los"   pkg="finite_state_machine"     type="fsm_restart.py"/>
   </group>
   <group ns="$(arg thrust_ns)">
-    <node name="thruster_allocator"   pkg="finite_state_machine"    output="screen" type="fsm_restart.py"/>
+    <node name="thruster_allocator"   pkg="finite_state_machine"     type="fsm_restart.py"/>
   </group>
 </launch>
