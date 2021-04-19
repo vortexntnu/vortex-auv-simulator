@@ -7,32 +7,64 @@
   <arg name="set_timeout" default="false"/>
   <arg name="timeout" default="0.0"/>
   <arg name="pool" default="cybernetics_pool"/>
+  <arg name="sm" default ="gladlaks"/>
+  <arg name="auv" default ="gladlaks"/>
 
-  
+
   <include file="$(find uuv_descriptions)/launch/$(arg pool).launch">
     <arg name="gui" value="$(arg gui)"/>
     <arg name="paused" value="$(arg paused)"/>
     <arg name="set_timeout" value="$(arg set_timeout)"/>
     <arg name="timeout" value="$(arg timeout)"/>
   </include>
-  
-  <include file="$(find manta_description)/launch/upload_manta.launch">
-    <arg name="camerafront" value="$(arg camerafront)"/>
-    <arg name="cameraunder" value="$(arg cameraunder)"/>
-  </include>
-  
+
+  <group if="$(eval arg('auv') == 'beluga')">
+    <include file="$(find beluga_description)/launch/upload_beluga.launch">
+      <arg name="camerafront" value="$(arg camerafront)"/>
+      <arg name="cameraunder" value="$(arg cameraunder)"/>
+    </include>
+  </group>
+
+  <group if="$(eval arg('auv') == 'manta')">
+    <include file="$(find manta_description)/launch/upload_manta.launch">
+      <arg name="camerafront" value="$(arg camerafront)"/>
+      <arg name="cameraunder" value="$(arg cameraunder)"/>
+    </include>
+  </group>
+
+  <group if="$(eval arg('auv') == 'gladlaks')">
+    <include file="$(find beluga_description)/launch/upload_beluga.launch">
+      <arg name="camerafront" value="$(arg camerafront)"/>
+      <arg name="cameraunder" value="$(arg cameraunder)"/>
+    </include>
+  </group>
+
   <include file="$(find manta_thruster_manager)/launch/thruster_manager.launch"/>
 
-  <include file="$(find auv_setup)/launch/auv.launch" >
-  <arg name="type" value="simulator"/>
-  </include>
+  <group if="$(eval arg('auv') == 'beluga')">
+    <include file="$(find auv_setup)/launch/gladlaks.launch" >
+      <arg name="type" value="simulator"/>
+    </include>
+  </group>
 
-  <!--  <include file="$(find vortex)/launch/pc.launch"/> 
+  <group if="$(eval arg('auv') == 'gladlaks')">
+    <include file="$(find auv_setup)/launch/gladlaks.launch" >
+      <arg name="type" value="simulator"/>
+    </include>
+  </group>
+
+  <group if="$(eval arg('auv') == 'manta')">
+    <include file="$(find auv_setup)/launch/manta.launch" >
+      <arg name="type" value="simulator"/>
+    </include>
+  </group>
+
+  <!--  <include file="$(find vortex)/launch/pc.launch"/>
   <include file="$(find vortex)/launch/dp_control.launch"/> -->
-<!--	
+<!--
    <arg name="record_pose" default="true" />
 
  <node pkg="rosbag" type="record" name="rosbag_record_pose"
        args="record /odometry/filtered /manta/pose_gt"/>  -->
- 
-</launch>			
+
+</launch>

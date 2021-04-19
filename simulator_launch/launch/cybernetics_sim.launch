@@ -16,24 +16,28 @@
     <arg name="set_timeout" value="$(arg set_timeout)"/>
     <arg name="timeout" value="$(arg timeout)"/>
   </include>
-<group if="$(eval arg('auv') == 'beluga')">
-  <include file="$(find beluga_description)/launch/upload_beluga.launch">
-    <arg name="camerafront" value="$(arg camerafront)"/>
-    <arg name="cameraunder" value="$(arg cameraunder)"/>
-  </include>
-</group>
-<group if="$(eval arg('auv') == 'manta')">
-  <include file="$(find manta_description)/launch/upload_manta.launch">
-    <arg name="camerafront" value="$(arg camerafront)"/>
-    <arg name="cameraunder" value="$(arg cameraunder)"/>
-  </include>
-</group>
-<group if="$(eval arg('auv') == 'gladlaks')">
-  <include file="$(find beluga_description)/launch/upload_beluga.launch">
-    <arg name="camerafront" value="$(arg camerafront)"/>
-    <arg name="cameraunder" value="$(arg cameraunder)"/>
-  </include>
-</group>
+
+  <group if="$(eval arg('auv') == 'beluga')">
+    <include file="$(find beluga_description)/launch/upload_beluga.launch">
+      <arg name="camerafront" value="$(arg camerafront)"/>
+      <arg name="cameraunder" value="$(arg cameraunder)"/>
+    </include>
+  </group>
+
+  <group if="$(eval arg('auv') == 'manta')">
+    <include file="$(find manta_description)/launch/upload_manta.launch">
+      <arg name="camerafront" value="$(arg camerafront)"/>
+      <arg name="cameraunder" value="$(arg cameraunder)"/>
+    </include>
+  </group>
+
+  <group if="$(eval arg('auv') == 'gladlaks')">
+    <include file="$(find beluga_description)/launch/upload_beluga.launch">
+      <arg name="camerafront" value="$(arg camerafront)"/>
+      <arg name="cameraunder" value="$(arg cameraunder)"/>
+    </include>
+  </group>
+
   <include file="$(find manta_thruster_manager)/launch/thruster_manager.launch"/>
 
   <!--  <include file="$(find vortex)/launch/pc.launch"/>
@@ -45,4 +49,3 @@
        args="record /odometry/filtered /manta/pose_gt"/>  -->
 
 </launch>
-
