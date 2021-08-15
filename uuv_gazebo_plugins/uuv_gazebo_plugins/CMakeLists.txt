@@ -1,10 +1,16 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(uuv_gazebo_plugins)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+# Specify C++11 standard
+if(NOT "${CMAKE_VERSION}" VERSION_LESS "3.16")
+    set(CMAKE_CXX_STANDARD 17)
+    set(CMAKE_CXX_STANDARD_REQUIRED ON)
+else()
+    set(LOCAL_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+endif()
 
-find_package(catkin REQUIRED)
-find_package(gazebo REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+    gazebo_dev)
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(Eigen3 REQUIRED)
 find_package(Protobuf REQUIRED)
@@ -34,92 +40,97 @@ message(STATUS "GAZEBO_MSG_INCLUDE_DIRS = " ${GAZEBO_MSG_INCLUDE_DIRS})
 
 file(GLOB msgs msgs/*.proto)
 
-protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${msgs})
-add_library(uuv_gazebo_plugins_msgs SHARED ${PROTO_SRCS})
-target_link_libraries(uuv_gazebo_plugins_msgs ${PROTOBUF_LIBRARY} ${GAZEBO_LIBRARIES})
-list(APPEND UUV_GAZEBO_PLUGINS_LIST uuv_gazebo_plugins_msgs)
-
 catkin_package(
-  INCLUDE_DIRS include
-               ${CMAKE_CURRENT_BINARY_DIR} # for generated messages
-               ${PROJECT_BINARY_DIR}/msgs
-               ${Boost_INCLUDE_DIR}
-               ${catkin_INCLUDE_DIRS}
-               ${GAZEBO_INCLUDE_DIRS}
-               ${GAZEBO_MSG_INCLUDE_DIRS}
-               ${EIGEN3_INCLUDE_DIRS}
+  INCLUDE_DIRS
+    include
+    ${CMAKE_CURRENT_BINARY_DIR} # for generated messages
+    ${GAZEBO_MSG_INCLUDE_DIRS}
   LIBRARIES
-    underwater_object_plugin
-    thruster_plugin
-    fin_plugin
-    dynamics
-  DEPENDS gazebo
+    uuv_underwater_object_plugin
+    uuv_thruster_plugin
+    uuv_fin_plugin
+    uuv_dynamics
 )
 
 include_directories(${PROJECT_SOURCE_DIR}/include
                     ${CMAKE_CURRENT_BINARY_DIR} # for generated messages
                     ${Boost_INCLUDE_DIR}
                     ${catkin_INCLUDE_DIRS}
-                    ${GAZEBO_INCLUDE_DIRS}
                     ${GAZEBO_MSG_INCLUDE_DIRS}
                     ${EIGEN3_INCLUDE_DIRS})
 
-link_directories(${EIGEN3_LIBRARY_DIRS} ${GAZEBO_LIBRARY_DIRS})
+link_directories(
+  ${catkin_LIBRARY_DIRS}
+  ${EIGEN3_LIBRARY_DIRS})
 
 ###########
 ## Build ##
 ###########
 
-add_library(dynamics
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${msgs})
+add_library(uuv_gazebo_plugins_msgs SHARED ${PROTO_SRCS})
+target_link_libraries(uuv_gazebo_plugins_msgs ${PROTOBUF_LIBRARY})
+list(APPEND UUV_GAZEBO_PLUGINS_LIST uuv_gazebo_plugins_msgs)
+
+add_library(uuv_dynamics
     SHARED
     src/Dynamics.cc
 )
-list(APPEND UUV_GAZEBO_PLUGINS_LIST dynamics)
-
-add_library(fin_plugin
+list(APPEND UUV_GAZEBO_PLUGINS_LIST uuv_dynamics)
+set_target_properties(uuv_dynamics
+    PROPERTIES
+    COMPILE_FLAGS
+    "${LOCAL_CXX_FLAGS}"
+)
+add_library(uuv_fin_plugin
     src/LiftDragModel.cc
     src/FinPlugin.cc
 )
-target_link_libraries(fin_plugin
-    dynamics
+target_link_libraries(uuv_fin_plugin
+    uuv_dynamics
     uuv_gazebo_plugins_msgs
-    ${GAZEBO_LIBRARIES}
+    ${catkin_LIBRARIES}
     ${Boost_LIBRARIES})
-add_dependencies(fin_plugin
+add_dependencies(uuv_fin_plugin
   uuv_gazebo_plugins_msgs
   ${catkin_EXPORTED_TARGETS})
-list(APPEND UUV_GAZEBO_PLUGINS_LIST fin_plugin)
+list(APPEND UUV_GAZEBO_PLUGINS_LIST uuv_fin_plugin)
 
-add_library(underwater_object_plugin
+add_library(uuv_underwater_object_plugin
     src/HydrodynamicModel.cc
     src/BuoyantObject.cc
     src/UnderwaterObjectPlugin.cc
 )
-target_link_libraries(underwater_object_plugin
-    ${GAZEBO_LIBRARIES}
+target_link_libraries(uuv_underwater_object_plugin
+    ${catkin_LIBRARIES}
     ${EIGEN3_LIBRARIES}
 )
-list(APPEND UUV_GAZEBO_PLUGINS_LIST underwater_object_plugin)
+list(APPEND UUV_GAZEBO_PLUGINS_LIST uuv_underwater_object_plugin)
+set_target_properties(uuv_underwater_object_plugin
+    PROPERTIES
+    COMPILE_FLAGS
+    "${LOCAL_CXX_FLAGS}"
+)
 
-add_library(thruster_plugin
+add_library(uuv_thruster_plugin
     src/ThrusterConversionFcn.cc
     src/ThrusterPlugin.cc
 )
-target_link_libraries(thruster_plugin
-    dynamics
+target_link_libraries(uuv_thruster_plugin
+    uuv_dynamics
     uuv_gazebo_plugins_msgs
-    ${GAZEBO_LIBRARIES}
+    ${catkin_LIBRARIES}
     ${Boost_LIBRARIES})
-add_dependencies(thruster_plugin
+add_dependencies(uuv_thruster_plugin
     uuv_gazebo_plugins_msgs
     ${catkin_EXPORTED_TARGETS})
-list(APPEND UUV_GAZEBO_PLUGINS_LIST thruster_plugin)
+list(APPEND UUV_GAZEBO_PLUGINS_LIST uuv_thruster_plugin)
 
 add_library(umbilical_plugin
   src/UmbilicalModel.cc
   src/UmbilicalPlugin.cc)
 target_link_libraries(umbilical_plugin
-  ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
+  ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 list(APPEND UUV_GAZEBO_PLUGINS_LIST umbilical_plugin)
 
 #############
@@ -139,8 +150,8 @@ install(DIRECTORY include/${PROJECT_NAME}/
 )
 
 install(DIRECTORY include/
-   DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
-   FILES_MATCHING PATTERN ".hh"
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN ".hh"
 )
 
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/
@@ -157,10 +168,12 @@ if(CATKIN_ENABLE_TESTING)
   catkin_add_gtest(UNIT_ThrusterConversionFcn_TEST
     src/ThrusterConversionFcn_TEST.cc)
   target_link_libraries(UNIT_ThrusterConversionFcn_TEST
-    thruster_plugin)
+    uuv_thruster_plugin
+    ${catkin_LIBRARIES})
 
   catkin_add_gtest(UNIT_ThrusterDynamics_TEST
     src/ThrusterDynamics_TEST.cc)
   target_link_libraries(UNIT_ThrusterDynamics_TEST
-    thruster_plugin ${GAZEBO_LIBRARIES})
+    uuv_dynamics
+    ${catkin_LIBRARIES})
 endif()
