@@ -22,7 +22,7 @@ import tf2_ros
 from os.path import isdir, join
 import yaml
 from time import sleep
-from models import Thruster
+from . import models
 from uuv_gazebo_ros_plugins_msgs.msg import FloatStamped
 from geometry_msgs.msg import Wrench
 
@@ -80,7 +80,7 @@ class ThrusterManager:
             source = source[1::]
             tf_trans_ned_to_enu = tf_buffer.lookup_transform(
                 target, source, rospy.Time(), rospy.Duration(1))
-        except Exception, e:
+        except Exception as e:
             rospy.loginfo('No transform found between base_link and base_link_ned'
                   ' for vehicle ' + self.namespace)
             rospy.loginfo(str(e))
@@ -140,11 +140,11 @@ class ThrusterManager:
                 topic = self.config['thruster_topic_prefix'] + str(i) + \
                     self.config['thruster_topic_suffix']
                 if list not in [type(params), type(conv_fcn)]:
-                    thruster = Thruster.create_thruster(
+                    thruster = models.Thruster.create_thruster(
                         conv_fcn, i, topic, None, None,
                         **params)
                 else:
-                    thruster = Thruster.create_thruster(
+                    thruster = models.Thruster.create_thruster(
                         conv_fcn[i], i, topic, None, None,
                         **params[i])
 
@@ -230,7 +230,7 @@ class ThrusterManager:
 
                 if equal_thrusters:
                     params = self.config['conversion_fcn_params']
-                    thruster = Thruster.create_thruster(
+                    thruster = models.Thruster.create_thruster(
                         self.config['conversion_fcn'],
                         i, topic, pos, quat,
                         **params)
@@ -240,7 +240,7 @@ class ThrusterManager:
                                                  'conversion_fcn are different')
                     params = self.config['conversion_fcn_params'][idx_thruster_model]
                     conv_fcn = self.config['conversion_fcn'][idx_thruster_model]
-                    thruster = Thruster.create_thruster(
+                    thruster = models.Thruster.create_thruster(
                         conv_fcn,
                         i, topic, pos, quat,
                         **params)
@@ -288,14 +288,14 @@ class ThrusterManager:
                 yaml_file.write(
                     yaml.safe_dump(
                         dict(tam=self.configuration_matrix.tolist())))
-            print 'TAM saved in <%s>' % join(self.output_dir, 'TAM.yaml')
+            print('TAM saved in <%s>' % join(self.output_dir, 'TAM.yaml'))
         elif recalculate:
-            print 'Recalculate flag on, matrix will not be stored in TAM.yaml'
+            print('Recalculate flag on, matrix will not be stored in TAM.yaml')
         else:
-            print 'Invalid output directory for the TAM matrix, dir=', self.output_dir
+            print('Invalid output directory for the TAM matrix, dir=', self.output_dir)
 
         self.ready = True
-        print ('ThrusterManager: ready')
+        print('ThrusterManager: ready')
         return True
 
     def command_thrusters(self):

@@ -15,10 +15,10 @@
 
 import rospy
 import numpy
-from thruster import Thruster
+from . import thruster
 
 
-class ThrusterProportional(Thruster):
+class ThrusterProportional(thruster.Thruster):
     """This model corresponds to the linear relation between a function
     abs(command)*command of the command input (usually the command angular
     velocity) to the thrust force. A constant gain has to be provided.

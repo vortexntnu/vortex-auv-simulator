@@ -15,10 +15,9 @@
 
 import rospy
 import numpy
-from thruster import Thruster
+from . import thruster
 
-
-class ThrusterCustom(Thruster):
+class ThrusterCustom(thruster.Thruster):
     """Class describing a custom conversion curve between the command input,
     usually the angular velocity, and the correspondent output thrust force.
     Here the inverse of the conversion function can be computed so that the
