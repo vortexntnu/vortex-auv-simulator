@@ -1,6 +1,6 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package uuv_world_plugins
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package uuv_sensor_ros_plugins_msgs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 0.6.13 (2019-08-12)
 -------------------
@@ -13,9 +13,6 @@ Changelog for package uuv_world_plugins
 
 0.6.10 (2019-02-28)
 -------------------
-* Fix errors from catkin_lint
-  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
-* Contributors: Musa Morena Marcusso Manhaes
 
 0.6.9 (2019-02-26)
 ------------------
@@ -31,15 +28,9 @@ Changelog for package uuv_world_plugins
 
 0.6.5 (2019-02-07)
 ------------------
-* Fix gazebo_dev dependency
-  Signed-off-by: Musa Morena Marcusso Manhães <Musa.Marcusso@de.bosch.com>
-* Contributors: Musa Morena Marcusso Manhães
 
 0.6.4 (2019-02-03)
 ------------------
-* FIX Dependency errors for ROS Buildfarm
-  Signed-off-by: Musa Morena Marcusso Manhaes <Musa.Marcusso@de.bosch.com>
-* Contributors: Musa Morena Marcusso Manhães
 
 0.6.3 (2018-12-13)
 ------------------
@@ -49,7 +40,9 @@ Changelog for package uuv_world_plugins
 
 0.6.2 (2018-12-03)
 ------------------
-* RM Ogre dependency from world plugins
+* CHANGE Sensor ROS plugins package name
+  Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
+* CHANGE Name of ROS sensor plugins package
   Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
 * Contributors: Musa Morena Marcusso Manhães
 
@@ -107,35 +100,27 @@ Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
 ------------------
 * CHANGE Bump version to 0.5.2
   Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
-* CHANGE Version
-* ADD Update the calls for the new Gazebo 9 API
+* ADD Salinity sensor message
   Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
-* FIX Seed to std::rand in the Gauss-Markov process class
+* CHANGE Version
+* FIX Name of position variable in message
+  Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
+* ADD Pose of beam wrt DVL link
+  Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
+* ADD Altitude information
   Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
 * CHANGE Package versions
   Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
 * FIX Typos and package version
   Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
-* ADD Important TODO for the underwater current
+* ADD WGS84 coordinates to measurement topic output
   Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
-* RM Old world plugin files
+* CHANGE CMakeLists for new file names and sensor
   Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
-* CHANGE CMakeLists configuration
+* ADD Chemical particle concentration message
   Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
-* ADD Underwater current plugin for Gazebo
+* ADD Acoustic sonar plugin to switch sonar on/off
   Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
-* CHANGE Print function for GM process parameters
-  Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
-* FIX Wrong linking.
-  Signed-off-by: Musa Morena Marcusso Manhaes <musa.marcusso@de.bosch.com>
-* FIX Code check.
-  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
-* Adding service callback implementation for the vertical and horizontal angle models.
-  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
-* Adding instance of Gauss-Markov process for vertical and horizontal angles.
-  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
-* Correcting generation of random value in Gauss-Markov process. Adding function to print the current model parameters.
-  Signed-off-by: Musa Morena Marcusso Manhães <musa.marcusso@de.bosch.com>
 * initial commit
   Signed-off-by: Sebastian Scherer (CR/AEI) <sebastian.scherer2@de.bosch.com>
-* Contributors: Musa Morena Marcusso Manhaes, Musa Morena Marcusso Manhães, Sebastian Scherer (CR/AEI)
+* Contributors: Musa Morena Marcusso Manhaes, Sebastian Scherer (CR/AEI)

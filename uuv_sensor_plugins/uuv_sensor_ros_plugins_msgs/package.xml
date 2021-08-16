@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>uuv_world_plugins</name>
+  <name>uuv_sensor_ros_plugins_msgs</name>
   <version>0.6.13</version>
-  <description>The uuv_world_plugins package</description>
+  <description>The uuv_sensor_ros_plugins_msgs package</description>
 
   <maintainer email="musa.marcusso@de.bosch.com">Musa Morena Marcusso Manhaes</maintainer>
   <maintainer email="sebastian.scherer2@de.bosch.com">Sebastian Scherer</maintainer>
@@ -16,8 +16,13 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <depend>gazebo_dev</depend>
-  <depend>gazebo_msgs</depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <build_export_depend>geometry_msgs</build_export_depend>
 
   <export>
   </export>

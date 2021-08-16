@@ -13,16 +13,21 @@ find_package(catkin REQUIRED COMPONENTS
   gazebo_msgs
   geometry_msgs
   uuv_world_plugins
-  uuv_world_ros_plugins_msgs)
-
-find_package(gazebo REQUIRED)
+  uuv_world_ros_plugins_msgs
+  gazebo_dev)
 
 catkin_package(
  INCLUDE_DIRS include
- LIBRARIES uuv_underwater_current_ros_plugin
-           uuv_sc_ros_interface_plugin
+ LIBRARIES
+  uuv_underwater_current_ros_plugin
+  uuv_sc_ros_interface_plugin
  CATKIN_DEPENDS
-#  DEPENDS system_lib
+   roscpp
+   gazebo_msgs
+   geometry_msgs
+   uuv_world_plugins
+   uuv_world_ros_plugins_msgs
+   gazebo_dev
 )
 
 include_directories(
@@ -30,12 +35,6 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${GAZEBO_INCLUDE_DIRS}
 )
-
-link_directories(
-  ${GAZEBO_LIBRARY_DIRS}
-)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
 
 add_library(uuv_underwater_current_ros_plugin src/UnderwaterCurrentROSPlugin.cc)
 target_link_libraries(uuv_underwater_current_ros_plugin ${catkin_LIBRARIES})
