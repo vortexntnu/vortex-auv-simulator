@@ -11,9 +11,11 @@
 ![ViewCount](https://views.whatilearened.today/views/github/vortexntnu/manta-auv-simulator.svg)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/vortexntnu/manta-auv-simulator/graphs/commit-activity)
 
-![MANTA](docs/manta_underwater_robosub.png)
-
 This repo contains additions to the uuv_simulator that are specific to Vortex and our drones.
+
+![MANTA](docs/manta_underwater_robosub.png)
+Figure by: Kristoffer Rakstad Solberg
+
 
 ## Prerequisites ##
 
@@ -26,10 +28,6 @@ uuv_simulator repository (noetic compatible!)
 ## Installation
   
 -------------------------
-
-![MANTA](docs/manta_underwater_robosub.png)
-
-Figure by: Kristoffer Rakstad Solberg
 
 1. Enter the workspace src folder
 	```bash
