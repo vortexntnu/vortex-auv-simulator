@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>vortex_uuv_descriptions</name>
+  <version>0.0.0</version>
+  <description>The vortex_uuv_descriptions package</description>
+
+  <!-- One maintainer tag required, multiple allowed, one person per tag -->
+  <!-- Example:  -->
+  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
+  <maintainer email="chstr@stud.ntnu.no">Christopher Strøm</maintainer>
+
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>TODO</license>
+
+
+  <build_depend>catkin</build_depend>
+  
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_ros_control</exec_depend>
+  <exec_depend>message_to_tf</exec_depend>
+  <exec_depend>uuv_sensor_ros_plugins</exec_depend>
+  <exec_depend>uuv_gazebo_ros_plugins</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+
+  <export>
+    <gazebo_ros gazebo_media_path="${prefix}"
+                gazebo_model_path="${prefix}/world_models"/>
+  </export>
+</package>
+
