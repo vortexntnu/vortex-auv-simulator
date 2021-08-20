@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # Copyright (c) 2016 The UUV Simulator Authors.
 # All rights reserved.
 #
@@ -22,9 +22,9 @@ from os.path import isdir, join
 from copy import deepcopy
 import yaml
 import tf2_ros
-from uuv_thrusters import ThrusterManager
+from auv_thrusters import ThrusterManager
 from geometry_msgs.msg import Wrench, WrenchStamped
-from manta_thruster_manager.srv import *
+from simulator_thruster_manager.srv import *
 
 
 class ThrusterAllocatorNode(ThrusterManager):
