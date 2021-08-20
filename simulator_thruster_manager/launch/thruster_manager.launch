@@ -30,11 +30,11 @@
   -->
   <arg name="reset_tam" default="false"/>
   <!-- Output folder to store the TAM.yaml and thruster_manager.yaml files -->
-  <arg name="output_dir" default="$(find manta_thruster_manager)/config"/>
+  <arg name="output_dir" default="$(find simulator_thruster_manager)/config"/>
   <!-- Thruster manager configuration file path -->
-  <arg name="config_file" default="$(find manta_thruster_manager)/config/thruster_manager.yaml"/>
+  <arg name="config_file" default="$(find simulator_thruster_manager)/config/thruster_manager.yaml"/>
   <!-- Thruster allocation matrix file path -->
-  <arg name="tam_file" default="$(find manta_thruster_manager)/config/TAM.yaml"/>
+  <arg name="tam_file" default="$(find simulator_thruster_manager)/config/TAM.yaml"/>
 
   <group ns="$(arg uuv_name)">
     <rosparam file="$(arg config_file)" command="load"/>
@@ -48,7 +48,7 @@
     </rosparam>
 
     <group if="$(arg reset_tam)">
-      <node pkg="manta_thruster_manager"
+      <node pkg="simulator_thruster_manager"
             type="thruster_allocator.py"
             name="thruster_allocator"
             output="screen">
@@ -60,7 +60,7 @@
     </group>
 
     <group unless="$(arg reset_tam)">
-      <node pkg="manta_thruster_manager"
+      <node pkg="simulator_thruster_manager"
             type="thruster_allocator.py"
             name="thruster_allocator"
             output="screen">
