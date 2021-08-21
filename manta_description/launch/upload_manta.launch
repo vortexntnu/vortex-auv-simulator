@@ -7,15 +7,15 @@
 <launch>
   <arg name="debug" default="0"/>
 
-  <arg name="x" default="5.0"/>
-  <arg name="y" default="-10.0"/>
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
   <arg name="z" default="0.0"/>
   <arg name="roll" default="0.0"/>
   <arg name="pitch" default="0.0"/>
   <arg name="yaw" default="0.0"/>
 
   <arg name="mode" default="default"/>
-  <arg name="namespace" default="manta"/>
+  <arg name="namespace" default="auv"/>
   <arg name="use_ned_frame" default="false"/>
 
   <group ns="$(arg namespace)">
@@ -52,7 +52,7 @@
 
   <arg name="camerafront" default="1"/>
   <group if="$(arg camerafront)">
-    <node ns="front" pkg="image_view" type="image_view" name="image_view" args="image:=/manta/manta/camerafront/camera_image">
+    <node ns="front" pkg="image_view" type="image_view" name="image_view" args="image:=/auv/auv/camerafront/camera_image">
     </node>
   </group>
 
@@ -60,7 +60,7 @@
 
   <arg name="cameraunder" default="1"/> 
   <group if="$(arg cameraunder)">
-    <node ns="under" pkg="image_view" type="image_view" name="image_view" args="image:=/manta/manta/cameraunder/camera_image">
+    <node ns="under" pkg="image_view" type="image_view" name="image_view" args="image:=/auv/auv/cameraunder/camera_image">
     </node>
   </group>  
 

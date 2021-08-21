@@ -13,9 +13,6 @@
 
 ![MANTA](docs/manta_underwater_robosub.png)
 
-## Note ##
-The README is almost identical to Vortex-AUV's README: https://github.com/vortexntnu/Vortex-AUV
-
 ## Prerequisites ##
 
 Linux distributions Bionic (Ubuntu 18.04) <br />
@@ -29,7 +26,7 @@ Installation guide for Vortex-AUV and ROS Melodic: https://github.com/vortexntnu
 Further documentation for ROS Melodic: http://wiki.ros.org/melodic
 
 ## 1. Download and build the customized UUV simulator for Manta AUV ##
-###### Assuming that ROS Melodic and Vortex-AUV is installed!
+###### Requires ROS Melodic and Vortex-AUV
   
 -------------------------
 
@@ -39,30 +36,47 @@ Figure by: Kristoffer Rakstad Solberg
 
 1. Enter the folder where you want to clone the repostory:
 	```bash
-	cd manta_ws/src
+	cd vortex_ws/src
 	```
 
 2. Clone the repository: 
 	```bash
-	git clone https://github.com/vortexntnu/manta-auv-simulator.git
+	git clone https://github.com/vortexntnu/vortex-simulator.git
 	```
 
 3. Compile the code by running "catkin build" inside the workspace:
 	```bash
-	cd ~/manta_ws/
+	cd ~/vortex_ws/
 	catkin build
 	```
-## 2. Run Manta V1 in Simulation with Gazebo, Smach viewer, Camera pop-up windows etc ##
+## 2. Run Vortex Simulator ##
 -------------------------
 
-1. Open a new terminal and run your simulation world. This will upload Manta (w/ sensor, camera, thrusters etc.) and launch robot localization as well. i.e :
-	```bash
-	roslaunch simulator_launch cybernetics_pool.launch
-	```
+### Method 1. Using launch files ### 
 
+1. Open a new terminal and launch a simulation. This will upload Manta (w/ sensor, camera, thrusters etc.), start the simulation world, upload any other object models, and launch robot localization i.e :
+	```bash
+	roslaunch simulator_launch cybernetics_sim.launch
+	```
+Builtin simulator worlds:
+- basin_sim.launch
+- cybernetics_sim.launch
+- robosub_sim.launch
+- vortex_sim.launch
+
+ROS launch arguments:
+| Argument    | Type  | Default | Description                                          |
+|-------------|-------|---------|------------------------------------------------------|
+| gui         | bool  | true    | Enable/Disable Gazebo GUI                            |
+| camerafront | bool  | true    | Enable/Disable Front Camera view                     |
+| cameraunder | bool  | false   | Enable/Disable Under AUV Camera view                 |
+| paused      | bool  | false   | Enable to start the Simulation Paused                |
+| set_timeout | bool  | false   | Enable timeout of Simulation (stop runtime)          |
+| timeout     | float | 0.0     | Set the runtime period (only if set_timeout is true) |
+	
 2. Launch all modules required for operating Manta:
 	```bash
-	roslaunch vortex manta_simulator.launch
+	roslaunch auv_setup auv.launch
 	```
 
 2. Execute your state machine of choice. i.e: 
@@ -70,6 +84,81 @@ Figure by: Kristoffer Rakstad Solberg
 	roslaunch finite_state_machine simtest.launch
 	```
 
+Builtin finite state machines:
+- simtest.launch
+- pooltest.launch
+- go_to_and_inspect_point.launch
+
+### Method 2. Using combined Simulator and AUV-modules launch file ###
+
+1. This will upload Manta (w/ sensor, camera, thrusters etc.), start the simulation world, upload any other object models, launch robot localization, start webViz server, AND launch all the modules required for operating Manta. i.e :
+	```bash
+	roslaunch simulator_launch combined_launch.launch
+	```
+To choose a different simulator world, use ROS launch argument 'pool'. Builtin pools:
+- basin_pool
+- cybernetics_pool
+- robosub_pool
+- vortex_pool
+- empty_underwater_world
+
+ROS launch arguments:
+| Argument    | Type   | Default          | Description                                          |
+|-------------|--------|------------------|------------------------------------------------------|
+| pool        | string | cybernetics_pool | Choose the Simulator World                           |
+| gui         | bool   | true             | Enable/Disable Gazebo GUI                            |
+| camerafront | bool   | true             | Enable/Disable Front Camera view                     |
+| cameraunder | bool   | false            | Enable/Disable Under AUV Camera view                 |
+| paused      | bool   | false            | Enable to start the Simulation Paused                |
+| set_timeout | bool   | false            | Enable timeout of Simulation (stop runtime)          |
+| timeout     | float  | 0.0              | Set the runtime period (only if set_timeout is true) |
+	
+2. Execute your state machine of choice. i.e: 
+	```bash
+	roslaunch finite_state_machine simtest.launch
+	```
+Builtin finite state machines:
+- simtest.launch
+- pooltest.launch
+- go_to_and_inspect_point.launch
+
+### Method 3. Using Shell (bash) scripts ###
+
+Shell-launch scripts can be used when the intention is to launch Gazebo Simulator, AUV modules, and a Finite State Machine (FSM) simultaneously. It spares a bit of time in case of repeated launches, and requires only a single terminal to launch everything.
+
+1. Go to the simualator folder and mark the scripts as executables (only needs to be done once):
+	```bash
+	cd vortex_ws/src/Vortex-Simulator/launch_scripts_bash
+	chmod u+r+x sim_launch_basic.sh sim_launch_fsm.sh sim_launch_fsm2.sh comb_launch_fsm.sh comb_launch_fsm2.sh
+	```
+
+2. Execute a launch script (must start from the same folder or using a full path). i.e: 
+	```bash
+	./sim_launch_basic.sh
+	```
+
+Available launch scripts and descriptions:
+| Launch script       | Description                                                                                                             |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------|
+| sim_launch_basic.sh | Equals starting the Simulator using method 1                                                                            |
+| sim_launch_fsm.sh   | As above, and automatically kills ALL ROS launches and ALL Gazebo runtimes when the FSM terminates                      |
+| sim_launch_fsm2.sh  | As above, but only kills launches and runtimes if the FSM terminates cleanly                                            |
+| comb_launch_fsm.sh  | Equals starting the Simulator using method 2, automatically kills the Simulator and AUV modules when the FSM terminates |
+| comb_launch_fsm2.sh | As above, but only stops the simulator and runtimes if the FSM terminates cleanly                                       |
+
+Script CLI arguments:
+| Argument            | Type   | Default                                                   | Description                                            |
+|---------------------|--------|-----------------------------------------------------------|--------------------------------------------------------|
+| -w or --world       | string | cybernetics_sim                                           | (only sim_launch_... scripts) Choose a simulator world |
+| --pool              | string | cybernetics_pool                                          | (only comb_launch_... scripts) Choose a simulator pool |
+| --fsm               | string | simtest                                                   | Choose a finite state machine                          |
+| -g or --gui         | bool   | true                                                      | Enable/Disable Gazebo client (GUI)                     |
+| -f or --camerafront | bool   | true                                                      | Enable/Disable Front Camera view                       |
+| -u or --cameraunder | bool   | false                                                     | Enable/Disable Under AUV Camera view                   |
+| -p or --paused      | bool   | false                                                     | Enable to start the Simulation Paused                  |
+| --set_timeout       | bool   | false                                                     | Enable timeout of Simulation (stop runtime)            |
+| -t or --timeout     | float  | 0.0                                                       | Set the runtime period (set_timeout must be true)      |
+| -s or --sleep       | int    | 3 (sim_launch_... scripts)<br>5 (comb_launch_... scripts) | Time period between different ROS launches             |
 
 ## Credits
 
