@@ -18,28 +18,9 @@
     <arg name="timeout" value="$(arg timeout)"/>
   </include>
 
-  <group if="$(eval arg('auv') == 'beluga')">
-    <include file="$(find beluga_description)/launch/upload_beluga.launch">
-      <arg name="camerafront" value="$(arg camerafront)"/>
-      <arg name="cameraunder" value="$(arg cameraunder)"/>
-    </include>
-  </group>
+  <include file="$(find simulator_launch)/launch/auv_models.launch" pass_all_args="true"/>
 
-  <group if="$(eval arg('auv') == 'manta')">
-    <include file="$(find manta_description)/launch/upload_manta.launch">
-      <arg name="camerafront" value="$(arg camerafront)"/>
-      <arg name="cameraunder" value="$(arg cameraunder)"/>
-    </include>
-  </group>
-
-  <group if="$(eval arg('auv') == 'gladlaks')">
-    <include file="$(find beluga_description)/launch/upload_beluga.launch">
-      <arg name="camerafront" value="$(arg camerafront)"/>
-      <arg name="cameraunder" value="$(arg cameraunder)"/>
-    </include>
-  </group>
-
-  <include file="$(find manta_thruster_manager)/launch/thruster_manager.launch"/>
+  <include file="$(find simulator_thruster_manager)/launch/thruster_manager.launch"/>
 
   <group if="$(eval arg('auv') == 'beluga')">
     <include file="$(find auv_setup)/launch/gladlaks.launch" >
@@ -58,13 +39,5 @@
       <arg name="type" value="simulator"/>
     </include>
   </group>
-
-  <!--  <include file="$(find vortex)/launch/pc.launch"/>
-  <include file="$(find vortex)/launch/dp_control.launch"/> -->
-<!--
-   <arg name="record_pose" default="true" />
-
- <node pkg="rosbag" type="record" name="rosbag_record_pose"
-       args="record /odometry/filtered /manta/pose_gt"/>  -->
 
 </launch>
