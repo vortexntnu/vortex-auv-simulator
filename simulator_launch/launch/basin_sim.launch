@@ -8,7 +8,6 @@
   <arg name="timeout" default="0.0"/>
   <arg name="auv" default="beluga"/>
 
-
   <include file="$(find uuv_descriptions)/launch/basin_pool.launch">
     <arg name="gui" value="$(arg gui)"/>
     <arg name="paused" value="$(arg paused)"/>

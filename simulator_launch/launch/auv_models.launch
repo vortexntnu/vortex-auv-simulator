@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <launch>
 
-
   <group if="$(eval arg('auv') == 'beluga')">
     <include file="$(find beluga_description)/launch/upload_beluga.launch">
       <arg name="camerafront" value="$(arg camerafront)"/>

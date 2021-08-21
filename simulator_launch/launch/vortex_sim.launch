@@ -1,4 +1,5 @@
 <?xml version="1.0" ?>
+<?xml version="1.0" ?>
 <launch>
   <arg name="gui" default="true"/>
   <arg name="camerafront" default="1"/>
@@ -7,7 +8,6 @@
   <arg name="set_timeout" default="false"/>
   <arg name="timeout" default="0.0"/>
   <arg name="auv" default="beluga"/>
-
 
   <include file="$(find uuv_descriptions)/launch/vortex_pool.launch">
     <arg name="gui" value="$(arg gui)"/>

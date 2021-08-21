@@ -8,8 +8,6 @@
   <arg name="timeout" default="0.0"/>
   <arg name="auv" default="beluga"/>
 
-
-
   <include file="$(find vortex_uuv_descriptions)/launch/cybernetics_pool.launch">
     <arg name="gui" value="$(arg gui)"/>
     <arg name="paused" value="$(arg paused)"/>
@@ -20,6 +18,5 @@
   <include file="$(find simulator_launch)/launch/auv_models.launch" pass_all_args="true"/>
   
   <include file="$(find simulator_thruster_manager)/launch/thruster_manager.launch"/>
-
 
 </launch>

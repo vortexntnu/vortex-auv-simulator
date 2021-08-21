@@ -10,7 +10,6 @@
   <arg name="sm" default ="gladlaks"/>
   <arg name="auv" default ="gladlaks"/>
 
-
   <include file="$(find uuv_descriptions)/launch/$(arg pool).launch">
     <arg name="gui" value="$(arg gui)"/>
     <arg name="paused" value="$(arg paused)"/>
