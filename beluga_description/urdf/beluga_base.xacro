@@ -33,7 +33,7 @@
   <xacro:property name="z_size" value="0.20066"/>
   <!-- minion_usv_height is not really! It's just for run... We need first calculate the Fossen parameters -->
   <!-- Volume -->
-  <xacro:property name="volume" value="0.0325"/>
+  <xacro:property name="volume" value="0.0305"/>
   <!-- Center of gravity -->
   <xacro:property name="cog" value="0 0 -0.08"/>
   <!--
@@ -68,8 +68,8 @@
           <mass value="${mass}" />
           <origin xyz="${cog}" rpy="0 0 0"/>
           <inertia
-            ixx="${0.503217}" ixy="${0.000204}" ixz="${-0.000526}"
-            iyy="${0.493449}" iyz="${0.000038}" izz="${0.919819}" /> 
+            ixx="${503.217}" ixy="${0.0}" ixz="${0.0}"
+            iyy="${493.449}" iyz="${0.0}" izz="${919.819}" /> 
         </inertial>
 
         <!-- This visual geometry representation can be used when running
