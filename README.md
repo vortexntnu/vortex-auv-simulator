@@ -76,9 +76,10 @@ ROS launch arguments:
 	
 2. Launch all modules required for operating Manta:
 	```bash
-	roslaunch auv_setup auv.launch
+	roslaunch auv_setup <drone>.launch type:=simulator
 	```
-
+Where \<drone\> is either manta or beluga.  
+	
 2. Execute your state machine of choice. i.e: 
 	```bash
 	roslaunch finite_state_machine simtest.launch
