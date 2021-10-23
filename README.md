@@ -49,6 +49,13 @@ Figure by: Kristoffer Rakstad Solberg
 	cd ~/vortex_ws/
 	catkin build
 	```
+	
+	If catkin build crashes your pc, try:
+	```bash
+	catkin build -j2
+	```
+	This should limit the amount of cpu recources used whilst building.
+	
 ## 2. Run Vortex Simulator ##
 -------------------------
 
