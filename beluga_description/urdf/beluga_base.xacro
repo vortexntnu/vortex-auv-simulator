@@ -26,22 +26,22 @@
     Vehicle's parameters (remember to enter the model parameters below)
   -->
   <!-- Mass -->
-  <xacro:property name="mass" value="30.9"/>
+  <xacro:property name="mass" value="24.00"/>
   <!-- Describing the dimensions of the vehicle's bounding box: width, length, height -->
-  <xacro:property name="x_size" value="0.400"/>
-  <xacro:property name="y_size" value="0.400"/>
-  <xacro:property name="z_size" value="0.20066"/>
+  <xacro:property name="x_size" value="0.367"/>
+  <xacro:property name="y_size" value="0.316"/>
+  <xacro:property name="z_size" value="0.216"/>
   <!-- minion_usv_height is not really! It's just for run... We need first calculate the Fossen parameters -->
   <!-- Volume -->
-  <xacro:property name="volume" value="0.0325"/>
+  <xacro:property name="volume" value="0.025"/>
   <!-- Center of gravity -->
-  <xacro:property name="cog" value="0 0 -0.08"/>
+  <xacro:property name="cog" value="-0.0152 0.001 0.0094"/>
   <!--
   Center of buoyancy according to eq. (3.1) p. 28 in Berg2012.
   The original values, [0.0822, -0.00773, 0.3872] however, seem to
   assume NWU (otherwise cob is below cog?). 0.155
   -->
-  <xacro:property name="cob" value="0 0 0.05"/>
+  <xacro:property name="cob" value="-0.0151 0.0009 0.020"/>
   <!-- Fluid density -->
   <xacro:property name="rho" value="1028"/>
   <!--
@@ -68,8 +68,8 @@
           <mass value="${mass}" />
           <origin xyz="${cog}" rpy="0 0 0"/>
           <inertia
-            ixx="${0.503217}" ixy="${0.000204}" ixz="${-0.000526}"
-            iyy="${0.493449}" iyz="${0.000038}" izz="${0.919819}" /> 
+            ixx="${0.50}" ixy="${0.000204}" ixz="${-0.000526}"
+            iyy="${1.1}" iyz="${0.000038}" izz="${1.2}" /> 
         </inertial>
 
         <!-- This visual geometry representation can be used when running
