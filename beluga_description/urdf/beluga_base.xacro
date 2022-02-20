@@ -33,15 +33,15 @@
   <xacro:property name="z_size" value="0.42"/>
   <!-- minion_usv_height is not really! It's just for run... We need first calculate the Fossen parameters -->
   <!-- Volume -->
-  <xacro:property name="volume" value="0.020"/>
+  <xacro:property name="volume" value="0.0325"/>
   <!-- Center of gravity -->
-  <xacro:property name="cog" value="-0.0152 0.001 0.0094"/>
+  <xacro:property name="cog" value="0.0 0.0 -0.08"/> <!--0.0067-->
   <!--
   Center of buoyancy according to eq. (3.1) p. 28 in Berg2012.
   The original values, [0.0822, -0.00773, 0.3872] however, seem to
   assume NWU (otherwise cob is below cog?). 0.155
   -->
-  <xacro:property name="cob" value="-0.0151 0.0009 0.020"/>
+  <xacro:property name="cob" value="0.0 0.0 0.05"/>
   <!-- Fluid density -->
   <xacro:property name="rho" value="1028"/>
   <!--
