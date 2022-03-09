@@ -26,7 +26,7 @@
     Vehicle's parameters (remember to enter the model parameters below)
   -->
   <!-- Mass -->
-  <xacro:property name="mass" value="24.00"/>
+  <xacro:property name="mass" value="30.9"/>
   <!-- Describing the dimensions of the vehicle's bounding box: width, length, height -->
   <xacro:property name="x_size" value="0.73"/>
   <xacro:property name="y_size" value="0.63"/>
@@ -72,11 +72,6 @@
             iyy="${1.1}" iyz="${0.000038}" izz="${1.2}" /> 
         </inertial>
 
-        <!-- This visual geometry representation can be used when running
-             tasks in which you need Gazebo to start quickly
-        -->
-        <!-- <xacro:if value="${use_simplified_mesh}"> -->
-        <!-- Code in rexrov2_base.xacro if use the flag use_simplified_mesh -->
 
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -115,7 +110,7 @@
    <!-- ONLY NEED FOR SIMULATIONS (GAZEBO SPECIFIC) 
      This .xacro file has to run to be able to move the robot when controller
      commands have been sent to the thrusters-->
-  <xacro:include filename="$(find beluga_description)/urdf/manta_sensors.xacro"/>
+  <xacro:include filename="$(find beluga_description)/urdf/beluga_sensors.xacro"/>
 
   </xacro:macro>
 
