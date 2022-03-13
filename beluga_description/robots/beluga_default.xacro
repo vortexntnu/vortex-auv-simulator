@@ -15,13 +15,13 @@
      limitations under the License.
 -->
 
-<robot name="manta" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+<robot name="beluga" xmlns:xacro="http://www.ros.org/wiki/xacro" >
   <xacro:arg name="debug" default="0"/>
-  <xacro:arg name="namespace" default="manta"/>
+  <xacro:arg name="namespace" default="beluga"/>
   <xacro:arg name="inertial_reference_frame" default="world"/>
   <!-- Include the ROV macro file -->
   <xacro:include filename="$(find beluga_description)/urdf/beluga_base.xacro"/>
-  <xacro:include filename="$(find manta_description)/urdf/manta_gazebo.xacro"/>
+  <xacro:include filename="$(find beluga_description)/urdf/beluga_gazebo.xacro"/>
 
   <!-- Create the rexrov -->
   <xacro:beluga_base
@@ -35,7 +35,7 @@
         <flow_velocity_topic>hydrodynamics/current_velocity</flow_velocity_topic>
         <debug>$(arg debug)</debug>
         <!-- Adding the hydrodynamic and hydrostatic parameters for the vehicle-->
-        <xacro:manta_hydro_model namespace="$(arg namespace)"/>
+        <xacro:beluga_hydro_model namespace="$(arg namespace)"/>
       </plugin>
     </gazebo>
   </xacro:beluga_base>

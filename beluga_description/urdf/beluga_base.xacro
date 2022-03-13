@@ -15,7 +15,7 @@
             thesis. Institutt for marin teknikk, 2012.
   -->
   <!-- includes -->
-  <xacro:include filename="$(find manta_description)/urdf/common.urdf.xacro"/>
+  <xacro:include filename="$(find beluga_description)/urdf/common.urdf.xacro"/>
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
   <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/snippets.xacro"/>  
 
@@ -35,13 +35,13 @@
   <!-- Volume -->
   <xacro:property name="volume" value="0.0325"/>
   <!-- Center of gravity -->
-  <xacro:property name="cog" value="0 0 -0.08"/>
+  <xacro:property name="cog" value="0.0 0.0 -0.08"/> 
   <!--
   Center of buoyancy according to eq. (3.1) p. 28 in Berg2012.
   The original values, [0.0822, -0.00773, 0.3872] however, seem to
   assume NWU (otherwise cob is below cog?). 0.155
   -->
-  <xacro:property name="cob" value="0 0 0.05"/>
+  <xacro:property name="cob" value="0.0 0.0 0.05"/>
   <!-- Fluid density -->
   <xacro:property name="rho" value="1028"/>
   <!--
@@ -72,11 +72,6 @@
             iyy="${0.493449}" iyz="${0.000038}" izz="${0.919819}" /> 
         </inertial>
 
-        <!-- This visual geometry representation can be used when running
-             tasks in which you need Gazebo to start quickly
-        -->
-        <!-- <xacro:if value="${use_simplified_mesh}"> -->
-        <!-- Code in rexrov2_base.xacro if use the flag use_simplified_mesh -->
 
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -115,7 +110,7 @@
    <!-- ONLY NEED FOR SIMULATIONS (GAZEBO SPECIFIC) 
      This .xacro file has to run to be able to move the robot when controller
      commands have been sent to the thrusters-->
-  <xacro:include filename="$(find beluga_description)/urdf/manta_sensors.xacro"/>
+  <xacro:include filename="$(find beluga_description)/urdf/beluga_sensors.xacro"/>
 
   </xacro:macro>
 
