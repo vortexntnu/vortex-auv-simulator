@@ -24,7 +24,7 @@ import yaml
 import tf2_ros
 from uuv_thrusters import ThrusterManager
 from geometry_msgs.msg import Wrench, WrenchStamped
-from manta_thruster_manager.srv import *
+from gazebo_thruster_manager.srv import *
 
 
 class ThrusterAllocatorNode(ThrusterManager):

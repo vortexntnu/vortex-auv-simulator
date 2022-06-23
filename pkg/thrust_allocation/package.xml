@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>manta_thruster_manager</name>
+  <name>gazebo_thruster_manager</name>
   <version>0.6.1</version>
   <description>The thruster manager package</description>
 

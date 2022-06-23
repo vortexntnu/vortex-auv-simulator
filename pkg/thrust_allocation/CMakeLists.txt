@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(manta_thruster_manager)
+project(gazebo_thruster_manager)
 
 find_package(catkin REQUIRED COMPONENTS
   std_msgs 

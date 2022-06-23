@@ -39,7 +39,7 @@
     </include>
   </group>
 
-  <include file="$(find manta_thruster_manager)/launch/thruster_manager.launch"/>
+  <include file="$(find gazebo_thruster_manager)/launch/thruster_manager.launch"/>
 
   <group if="$(eval arg('auv') == 'beluga')">
     <include file="$(find auv_setup)/launch/gladlaks.launch" >
