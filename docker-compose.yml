@@ -1,0 +1,14 @@
+rsion: '3.7'
+services:
+  vortex-simulator:
+    build: .
+    container_name: vortex-simulator
+    user: vortex
+    privileged: true
+    volumes:
+      - "./sim_ws:/home/vortex/sim_ws"
+    environment: 
+      DISPLAY: :0 # Allow for launching Rviz and RQT from container
+    stdin_open: true
+    tty: true
+    network_mode: host
