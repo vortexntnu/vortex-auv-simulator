@@ -52,8 +52,8 @@
 
   <arg name="camerafront" default="1"/>
   <group if="$(arg camerafront)">
-    <node ns="front" pkg="image_view" type="image_view" name="image_view" args="image:=/auv/auv/camerafront/camera_image">
-    </node>
+    <node ns="front_left" pkg="image_view" type="image_view" name="image_view" args="image:=/auv/auv/camerafront_left/camera_image"/>
+    <node ns="front_right" pkg="image_view" type="image_view" name="image_view" args="image:=/auv/auv/camerafront_right/camera_image"/>
   </group>
 
   <!-- Launching a window for camera under -->
