@@ -9,7 +9,7 @@
   <arg name="auv" default="beluga"/>
 
 
-  <include file="$(find uuv_descriptions)/launch/robosub_pool.launch">
+  <include file="$(find uuv_descriptions)/launch/robosub2019_pool.launch">
     <arg name="gui" value="$(arg gui)"/>
     <arg name="paused" value="$(arg paused)"/>
     <arg name="set_timeout" value="$(arg set_timeout)"/>
