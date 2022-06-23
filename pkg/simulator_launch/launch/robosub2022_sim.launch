@@ -22,11 +22,6 @@
     <arg name="cameraunder" value="$(arg cameraunder)"/>
   </include>
 
-  <include file="$(find beluga_description)/launch/upload_beluga.launch">
-    <arg name="camerafront" value="$(arg camerafront)"/>
-    <arg name="cameraunder" value="$(arg cameraunder)"/>
-  </include>
-
   <!-- Thrust allocation for the simulator specifically -->
   <include file="$(find gazebo_thruster_manager)/launch/thruster_manager.launch"/>
 
