@@ -1,14 +1,17 @@
-rsion: '3.7'
+version: '3.7'
 services:
   vortex-simulator:
     build: .
     container_name: vortex-simulator
     user: vortex
     privileged: true
-    volumes:
-      - "./sim_ws:/home/vortex/sim_ws"
     environment: 
       DISPLAY: :0 # Allow for launching Rviz and RQT from container
+    volumes:
+      - ./pkg:/home/vortex/sim_ws/src/pkg
+      - ./robots:/home/vortex/sim_ws/src/robots
+      - ./uuv_simulator:/home/vortex/sim_ws/src/uuv_simulator
     stdin_open: true
     tty: true
     network_mode: host
+    entrypoint: ["/bin/bash", "-l"]

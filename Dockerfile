@@ -1,5 +1,7 @@
 FROM ros:melodic-ros-base-bionic
 
+SHELL [ "/bin/bash", "-c" ]
+
 RUN adduser --quiet --disabled-password --shell /bin/bash \
     --home /home/vortex --gecos "Vortex user for simulator" vortex
 RUN echo "vortex:gladlaks" | chpasswd
@@ -51,4 +53,11 @@ RUN echo "export GAZEBO_MODEL_PATH=/home/vortex/sim_ws/src/manta_gazebo:$GAZEBO_
 RUN echo 'source /opt/ros/melodic/setup.bash' >> /home/vortex/.bashrc
 RUN echo 'source ~/sim_ws/devel/setup.bash' >> /home/vortex/.bashrc
 
-CMD ["/bin/bash"]
+COPY ./pkg /home/vortex/sim_ws/src/pkg
+COPY ./robots /home/vortex/sim_ws/src/robots
+COPY ./uuv_simulator /home/vortex/sim_ws/src/uuv_simulator
+
+RUN cd /home/vortex/sim_ws && source /opt/ros/melodic/setup.bash && catkin build
+
+COPY ./entrypoint.sh /entrypoint.sh
+ENTRYPOINT [ "/entrypoint.sh" ]
