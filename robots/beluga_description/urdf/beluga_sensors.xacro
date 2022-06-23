@@ -41,12 +41,16 @@
   </xacro:default_imu_macro>	
 
   <!-- Mount a camera -->
-  <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="front">
-    <origin xyz="0.349 0.0 0.058" rpy="0.01 0.18 -0.005"/>
+  <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="front_left">
+    <origin xyz="0.349 0.1 0.058" rpy="0.00 0.0 0.0"/>
+  </xacro:default_camera>
+
+  <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="front_right">
+    <origin xyz="0.349 -0.1 0.058" rpy="0.00 0.0 0.0"/>
   </xacro:default_camera>
   
   <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="under">
-    <origin xyz="0.15 0.0 -0.06" rpy="0 ${0.5*pi} 0"/>
+    <origin xyz="0.15 0.0 -0.15" rpy="0 ${0.5*pi} 0"/>
   </xacro:default_camera>
 <!--
   <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="left">

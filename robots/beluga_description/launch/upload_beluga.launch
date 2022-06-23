@@ -49,20 +49,10 @@
   </group>
 
 <!-- Launching a window for camera in front-->
-
-  <arg name="camerafront" default="1"/>
-  <group if="$(arg camerafront)">
     <node ns="front_left" pkg="image_view" type="image_view" name="image_view" args="image:=/auv/auv/camerafront_left/camera_image"/>
-    <node ns="front_right" pkg="image_view" type="image_view" name="image_view" args="image:=/auv/auv/camerafront_right/camera_image"/>
-  </group>
+    <node ns="front_right" pkg="image_view" type="image_view" name="image_view_right" args="image:=/auv/auv/camerafront_right/camera_image"/>
+    <node ns="under" pkg="image_view" type="image_view" name="image_view_down" args="image:=/auv/auv/cameraunder/camera_image"/>
 
-  <!-- Launching a window for camera under -->
-
-  <arg name="cameraunder" default="1"/> 
-  <group if="$(arg cameraunder)">
-    <node ns="under" pkg="image_view" type="image_view" name="image_view" args="image:=/auv/auv/cameraunder/camera_image">
-    </node>
-  </group>  
 
 
 <!-- Launching assistants -->
