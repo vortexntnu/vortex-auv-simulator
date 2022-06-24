@@ -115,7 +115,7 @@
     </model>
 
     <include>
-      <uri>model://pool</uri>
+      <uri>model://pools/pool</uri>
     </include>
 
     <!-- Side A -->

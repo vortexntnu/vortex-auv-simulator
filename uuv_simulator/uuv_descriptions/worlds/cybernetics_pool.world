@@ -106,7 +106,7 @@
     <!--Permanently placed model -->
     
     <include>
-      <uri>model://cybernetics_pool</uri>
+      <uri>model://pools/cybernetics_pool</uri>
     </include>
   
     <!-- Bounding box with sea surface -->

@@ -52,13 +52,13 @@
 
     <!-- Bounding box with sea surface -->
     <include>
-      <uri>model://ocean_box</uri>
+      <uri>model://environment/ocean_box</uri>
       <pose>0 0 -0.1 0 0 0</pose>
     </include> 
 
     <!-- Pool -->
     <include>
-      <uri>model://vortex_pool</uri>
+      <uri>model://pools/vortex_pool</uri>
       <pose>18 -13 0 0 0 0</pose>
     </include>
   
@@ -68,7 +68,7 @@
     <include>
       <name>gate</name>
       <pose> 4 1 -0.5 0 0 1.57</pose>
-      <uri>model://2018/gate</uri>
+      <uri>model://robosub/2022/gate</uri>
     </include>
 
     <!-- Mark: Path 1 -->
@@ -88,7 +88,7 @@
     <!-- Task: Octagon -->
 
     <include>
-      <uri>model://octagon</uri>
+      <uri>model://robosub/2022/octagon</uri>
       <pose>15 15 -0.1 0 0 0</pose>
     </include>
 
@@ -96,13 +96,13 @@
     <include>
       <name>path_marker1</name>
       <pose>14.2 -22.6 -5.0 0 0 -1.13</pose>
-      <uri>model://2018/path_markers</uri>
+      <uri>model://robosub/2022/path</uri>
     </include>
 
     <include>
       <name>path_marker2</name>
       <pose>21.5 -18.4 -5.0 0 0 -0.85</pose>
-      <uri>model://2018/path_markers</uri>
+      <uri>model://robosub/2022/path</uri>
     </include>
 
     <light type="directional" name="sun4">
