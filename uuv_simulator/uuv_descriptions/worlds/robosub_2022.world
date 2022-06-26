@@ -1,9 +1,4 @@
 <?xml version="1.0" ?>
-<!-- 
-     Written by Kristoffer Rakstad Solberg, Student
-     Copyright (c) 2019 Manta AUV, Vortex NTNU.
-     All rights reserved.
--->
 
 <!-- Scenery specifics -->
 
@@ -52,14 +47,14 @@
 
     <!-- Bounding box with sea surface -->
     <include>
-      <uri>model://ocean_box</uri>
+      <uri>model://environment/ocean_box</uri>
       <pose>0 0 -0.1 0 0 0</pose>
     </include> 
 
     <!-- Pool -->
     <include>
-      <uri>model://vortex_pool</uri>
-      <pose>18 -13 0 0 0 0</pose>
+      <uri>model://pools/vortex_pool</uri>
+      <pose>19 14 0 0 0 0</pose>
     </include>
   
     <!-- RoboSub tasks -->
@@ -67,17 +62,50 @@
     <!-- Task: Gate -->
     <include>
       <name>gate</name>
-      <pose> 4 1 -0.5 0 0 1.57</pose>
-      <uri>model://2018/gate</uri>
+      <pose> 4 -2 -0.5 0 0 0</pose>
+      <uri>model://2022/gate</uri>
     </include>
+
+    <include>
+      <name>gate-bootlegger</name>
+      <pose> 3.9 -2.0 -0.68 0 0 0</pose>
+      <uri>model://2022/gate-bootlegger</uri>
+    </include>
+
+    <include>
+      <name>gate-gman</name>
+      <pose> 3.9 -0.5 -0.68 0 0 0</pose>
+      <uri>model://2022/gate-gman</uri>
+    </include>
+
+
 
     <!-- Mark: Path 1 -->
 
+
     <!-- Task: Buoys -->
+    <!-- <include>
+      <name>buoy</name>
+      <pose> 5 2 -0.5 0 0 1.57</pose>
+      <uri>model://2022/buoy-gman</uri>
+    </include> -->
+
 
     <!-- Mark: Path 2-->
 
+
     <!-- Task: Bins -->
+    <!-- <include>
+      <name>bin1</name>
+      <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+      <uri>model://2022/bins-bootlegger</uri>
+    </include>
+
+    <include>
+      <name>bin2</name>
+      <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+      <uri>model://2022/bins-gman</uri>
+    </include> -->
 
     <!-- Mark: Pinger 1 -->
 
@@ -86,24 +114,10 @@
     <!-- Mark: Pinger 2 -->
 
     <!-- Task: Octagon -->
-
-    <include>
-      <uri>model://octagon</uri>
+    <!-- <include>
+      <uri>model://2022/octagon-bootlegger</uri>
       <pose>15 15 -0.1 0 0 0</pose>
-    </include>
-
-
-    <include>
-      <name>path_marker1</name>
-      <pose>14.2 -22.6 -5.0 0 0 -1.13</pose>
-      <uri>model://2018/path_markers</uri>
-    </include>
-
-    <include>
-      <name>path_marker2</name>
-      <pose>21.5 -18.4 -5.0 0 0 -0.85</pose>
-      <uri>model://2018/path_markers</uri>
-    </include>
+    </include> -->
 
     <light type="directional" name="sun4">
       <cast_shadows>1</cast_shadows>
