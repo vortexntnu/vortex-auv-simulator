@@ -78,15 +78,17 @@
       <uri>model://2022/gate-gman</uri>
     </include>
 
-
-
     <!-- Mark: Path 1 -->
-
+    <include>
+      <name>path1</name>
+      <pose> 6 -1 -2 0 0 1.87</pose>
+      <uri>model://2022/path</uri>
+    </include>
 
     <!-- Task: Buoys -->
     <!-- <include>
       <name>buoy</name>
-      <pose> 5 2 -0.5 0 0 1.57</pose>
+      <pose> 8 3 -0.5 0 0 1.57</pose>
       <uri>model://2022/buoy-gman</uri>
     </include> -->
 
