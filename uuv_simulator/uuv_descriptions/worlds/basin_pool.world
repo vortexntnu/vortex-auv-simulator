@@ -59,7 +59,7 @@
 <!--Permanently placed model -->
     
     <include>
-      <uri>model://pools/basin_pool</uri>
+      <uri>model://basin_pool</uri>
     </include>
   
     <!-- Bounding box with sea surface -->
