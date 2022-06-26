@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sdf version="1.7">
+<sdf version='1.6'>
     <model name="gate-gman">
         <link name="base_link">
             <pose>0 0 0 0 0 0</pose>
