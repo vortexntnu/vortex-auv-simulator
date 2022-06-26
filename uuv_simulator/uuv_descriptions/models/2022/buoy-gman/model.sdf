@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <sdf version='1.6'>
     <model name="buoy-gman">
+        <static>true</static>
         <link name="base_link">
             <pose>0 0 0 0 0 0</pose>
             <gravity>0</gravity>
             <inertial>
-                <mass>1</mass>
+                <mass>100</mass>
             </inertial>
             <visual name='cube_visual'>
                 <geometry>
@@ -17,7 +18,7 @@
                     <color rgba="0.5 0.5 0.5 0.0"/>
                     <script>
                         <uri>model://2022/buoy-gman/materials/scripts</uri>
-                        <uri>model://20227buoy-gman/materials/textures</uri>
+                        <uri>model://2022/buoy-gman/materials/textures</uri>
                         <name>buoyGman/Diffuse</name>
                     </script>
                 </material>

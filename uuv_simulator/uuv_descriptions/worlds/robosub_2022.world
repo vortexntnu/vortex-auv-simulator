@@ -62,35 +62,41 @@
     <!-- Task: Gate -->
     <include>
       <name>gate</name>
-      <pose> 4 -2 -0.5 0 0 0</pose>
+      <pose> 3 -2 -1.0 0 0 0</pose>
       <uri>model://2022/gate</uri>
     </include>
 
     <include>
       <name>gate-bootlegger</name>
-      <pose> 3.9 -2.0 -0.68 0 0 0</pose>
+      <pose> 2.9 -2.0 -1.18 0 0 0</pose>
       <uri>model://2022/gate-bootlegger</uri>
     </include>
 
     <include>
       <name>gate-gman</name>
-      <pose> 3.9 -0.5 -0.68 0 0 0</pose>
+      <pose> 2.9 -0.5 -1.18 0 0 0</pose>
       <uri>model://2022/gate-gman</uri>
     </include>
 
     <!-- Mark: Path 1 -->
     <include>
       <name>path1</name>
-      <pose> 6 -1 -2 0 0 1.87</pose>
+      <pose> 5 -1 -2.5 0 0 2.4</pose>
       <uri>model://2022/path</uri>
     </include>
 
     <!-- Task: Buoys -->
-    <!-- <include>
-      <name>buoy</name>
-      <pose> 8 3 -0.5 0 0 1.57</pose>
+    <include>
+      <name>buoy-bootlegger</name>
+      <pose> 8 2.55 -1.5 0 0 0</pose>
+      <uri>model://2022/buoy-bootlegger</uri>
+    </include>
+
+        <include>
+      <name>buoy-gman</name>
+      <pose> 8 3.25 -1.5 0 0 0</pose>
       <uri>model://2022/buoy-gman</uri>
-    </include> -->
+    </include>
 
 
     <!-- Mark: Path 2-->
