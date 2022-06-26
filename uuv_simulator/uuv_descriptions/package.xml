@@ -25,6 +25,6 @@
 
   <export>
     <gazebo_ros gazebo_media_path="${prefix}"
-                gazebo_model_path="${prefix}/world_models"/>
+                gazebo_model_path="${prefix}/models"/>
   </export>
 </package>
