@@ -21,17 +21,18 @@
       <ambient>0.01 0.01 0.01 1.0</ambient>
       <sky>
         <clouds>
-          <speed>12</speed>
+          <speed>0</speed>
         </clouds>
       </sky>
       <shadows>1</shadows>
-      <!-- <fog>
-        <color>0.0039 0.26 0.415 1.0</color>
+      <fog>
+        <color>0.05 0.4 0.5 1.0</color>
         <type>linear</type>
-        <density>0.2</density>
-        <start>10</start>
-        <end>40</end>
-      </fog> -->
+        <density>0.9</density>
+        <start>0</start>
+        <end>32</end>
+      </fog>
+      <origin_visual>true</origin_visual>
     </scene> 
 
     <!-- Origin placed somewhere in the middle of the North Sea  -->
@@ -43,18 +44,33 @@
     <!-- Global light source -->
     <include>
       <uri>model://sun</uri>
+      <cast_shadows>false</cast_shadows>
     </include>
 
+    <light type="point" name="pool_light_1">
+      <pose>1.5 1.4 -1.0 0 0 0</pose>
+      <diffuse>.5 .5 .5 1</diffuse>
+      <specular>.1 .1 .1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+    
+
     <!-- Bounding box with sea surface -->
-    <!-- <include>
+    <include>
       <uri>model://environment/ocean_box</uri>
       <pose>0 0 -0.1 0 0 0</pose>
-    </include>  -->
+    </include> 
 
     <!-- Pool -->
     <include>
       <uri>model://pools/robosub2022_pool</uri>
-      <pose>0 0 0.25 3.14 0 0</pose>
+      <pose>10 21.5 0.25 3.14 0 0</pose>
     </include>
   
     <!-- RoboSub tasks -->
@@ -62,19 +78,19 @@
     <!-- Task: Gate -->
     <include>
       <name>gate</name>
-      <pose> 3 -2 -1.0 0 0 0</pose>
+      <pose> 5 -2 -1.0 0 0 0</pose>
       <uri>model://2022/gate</uri>
     </include>
 
     <include>
       <name>gate-bootlegger</name>
-      <pose> 2.9 -2.0 -1.15 0 0 0</pose>
+      <pose> 4.9 -2.0 -1.15 0 0 0</pose>
       <uri>model://2022/gate-bootlegger</uri>
     </include>
 
     <include>
       <name>gate-gman</name>
-      <pose> 2.9 -0.5 -1.15 0 0 0</pose>
+      <pose> 4.9 -0.5 -1.15 0 0 0</pose>
       <uri>model://2022/gate-gman</uri>
     </include>
 
@@ -82,7 +98,7 @@
     <!-- Mark: Path 1 -->
     <include>
       <name>path1</name>
-      <pose> 5 -1 -2.5 0 0 2.4</pose>
+      <pose> 7 -1 -2.1 0 0 2.4</pose>
       <uri>model://2022/path</uri>
     </include>
 
@@ -90,13 +106,13 @@
     <!-- Task: Buoys -->
     <include>
       <name>buoy-bootlegger</name>
-      <pose> 8 2.55 -1.5 0 0 0</pose>
+      <pose> 10 2.55 -1.5 0 0 0</pose>
       <uri>model://2022/buoy-bootlegger</uri>
     </include>
 
         <include>
       <name>buoy-gman</name>
-      <pose> 8 3.25 -1.5 0 0 0</pose>
+      <pose> 10 3.25 -1.5 0 0 0</pose>
       <uri>model://2022/buoy-gman</uri>
     </include>
 
@@ -104,7 +120,7 @@
     <!-- Mark: Path 2-->
     <include>
       <name>path2</name>
-      <pose> 9 2.0 -2.5 0 0 0.9</pose>
+      <pose> 11 2.0 -2.3 0 0 0.9</pose>
       <uri>model://2022/path</uri>
     </include>
 
