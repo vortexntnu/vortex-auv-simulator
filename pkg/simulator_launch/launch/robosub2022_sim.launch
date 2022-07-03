@@ -8,6 +8,10 @@
   <arg name="timeout" default="0.0"/>
   <arg name="auv" default="beluga"/>
 
+  <!-- Remap camera to match the ZED outputs -->
+  <remap from="/auv/auv/camerafront_left/camera_image" to="/zed2/zed_node/rgb/image_rect_color"/>
+  <remap from="/auv/auv/cameraunder/camera_image" to="/udfc/wrapper/camera_rect"/>
+
   <!-- This is where the robosub items and pool is launced -->
   <include file="$(find uuv_descriptions)/launch/robosub2022_pool.launch">
     <arg name="gui" value="$(arg gui)"/>
@@ -21,5 +25,4 @@
 
   <!-- Thrust allocation for the simulator specifically -->
   <include file="$(find gazebo_thruster_manager)/launch/thruster_manager.launch"/>
-
 </launch>
