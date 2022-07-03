@@ -18,6 +18,7 @@
   <arg name="namespace" default="auv"/>
   <arg name="use_ned_frame" default="false"/>
 
+
   <group ns="$(arg namespace)">
     <group if="$(arg use_ned_frame)">
       <param name="robot_description"
@@ -49,11 +50,9 @@
   </group>
 
 <!-- Launching a window for camera in front-->
-    <node ns="front_left" pkg="image_view" type="image_view" name="image_view" args="image:=/auv/auv/camerafront_left/camera_image"/>
+    <!-- <node ns="front_left" pkg="image_view" type="image_view" name="image_view" args="image:=/auv/auv/camerafront_left/camera_image"/>
     <node ns="front_right" pkg="image_view" type="image_view" name="image_view_right" args="image:=/auv/auv/camerafront_right/camera_image"/>
-    <node ns="under" pkg="image_view" type="image_view" name="image_view_down" args="image:=/auv/auv/cameraunder/camera_image"/>
-
-
+    <node ns="under" pkg="image_view" type="image_view" name="image_view_down" args="image:=/auv/auv/cameraunder/camera_image"/> -->
 
 <!-- Launching assistants -->
 

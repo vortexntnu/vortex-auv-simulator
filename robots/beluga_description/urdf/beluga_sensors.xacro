@@ -11,7 +11,7 @@
     namespace="${namespace}"
     parent_link="${namespace}/base_link"
     inertial_reference_frame="${inertial_reference_frame}">
-    <origin xyz="0.074 -0.015 -0.115" rpy="-3.14 1.57 -3.14"/>
+    <origin xyz="0.0 0.0 -0.135" rpy="-3.14 1.57 -3.14"/>
   </xacro:default_dvl_macro> 
 
   <!-- Magnetometer  -->
@@ -41,16 +41,17 @@
   </xacro:default_imu_macro>	
 
   <!-- Mount a camera -->
+  <!-- The front left camera is used for the CV pipeline -->
   <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="front_left">
-    <origin xyz="0.349 0.1 0.058" rpy="0.00 0.0 0.0"/>
+    <origin xyz="0.4 0.05 0.025" rpy="0.00 0.0 0.0"/>
   </xacro:default_camera>
 
   <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="front_right">
-    <origin xyz="0.349 -0.1 0.058" rpy="0.00 0.0 0.0"/>
+    <origin xyz="0.4 -0.05 0.025" rpy="0.00 0.0 0.0"/>
   </xacro:default_camera>
   
   <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="under">
-    <origin xyz="0.15 0.0 -0.15" rpy="0 ${0.5*pi} 0"/>
+    <origin xyz="-0.025 -0.08 -0.17" rpy="0 ${0.5*pi} 0"/>
   </xacro:default_camera>
 <!--
   <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="left">
