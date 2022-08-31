@@ -1,0 +1,19 @@
+material binsBootlegger/Diffuse
+{
+  receive_shadows on 
+  technique
+  {
+    pass
+    {
+      scene_blend alpha_blend
+      depth_write off
+
+      texture_unit
+      {
+        texture bins-bootlegger.png
+        tex_coord_set 0
+        colour_op modulate
+      }
+    }
+  }
+}

@@ -29,11 +29,6 @@ Further documentation for ROS Melodic: http://wiki.ros.org/melodic
 ###### Requires ROS Melodic and Vortex-AUV
   
 -------------------------
-
-![MANTA](docs/manta_underwater_robosub.png)
-
-Figure by: Kristoffer Rakstad Solberg
-
 1. Enter the folder where you want to clone the repostory:
 	```bash
 	cd vortex_ws/src
