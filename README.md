@@ -2,7 +2,7 @@
 [![GitHub watchers](https://img.shields.io/github/watchers/vortexntnu/manta-auv-simulator.svg?style=social&label=Watch&maxAge=2592000)](https://GitHub.com/vortexntnu/manta-auv-simulator/watchers/)
 [![GitHub forks](https://img.shields.io/github/forks/vortexntnu/manta-auv-simulator.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/vortexntnu/manta-auv-simulator/network/)
 
-# Manta Autonomous Underwater Vehicle (AUV) simulator: Gazebo UUV simulator rebuilt for Vortex NTNU purposes
+# Vortex AUV simulator: Gazebo UUV simulator rebuilt for Vortex NTNU purposes
 
 [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://vortexntnu.no)
 [![GitHub contributors](https://img.shields.io/github/contributors/vortexntnu/manta-auv-simulator.svg)](https://GitHub.com/vortexntnu/manta-auv-simulator/graphs/contributors/)
@@ -29,11 +29,6 @@ Further documentation for ROS Melodic: http://wiki.ros.org/melodic
 ###### Requires ROS Melodic and Vortex-AUV
   
 -------------------------
-
-![MANTA](docs/manta_underwater_robosub.png)
-
-Figure by: Kristoffer Rakstad Solberg
-
 1. Enter the folder where you want to clone the repostory:
 	```bash
 	cd vortex_ws/src
@@ -49,6 +44,13 @@ Figure by: Kristoffer Rakstad Solberg
 	cd ~/vortex_ws/
 	catkin build
 	```
+	
+	If catkin build crashes your pc, try:
+	```bash
+	catkin build -j2
+	```
+	This should limit the amount of cpu recources used whilst building.
+	
 ## 2. Run Vortex Simulator ##
 -------------------------
 
@@ -76,9 +78,10 @@ ROS launch arguments:
 	
 2. Launch all modules required for operating Manta:
 	```bash
-	roslaunch auv_setup auv.launch
+	roslaunch auv_setup <drone>.launch type:=simulator
 	```
-
+Where \<drone\> is either manta or beluga.  
+	
 2. Execute your state machine of choice. i.e: 
 	```bash
 	roslaunch finite_state_machine simtest.launch
