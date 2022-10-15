@@ -15,46 +15,52 @@
 
 ## Prerequisites ##
 
-Linux distributions Bionic (Ubuntu 18.04) <br />
-C++ 11 compiler or newer.
+Because of a change in uuv-simulator between Melodic and Noetic, this repo will stay Melodic for the time being. To run it locally, you would then need Ubuntu 18.04 and Melodic. Since vortex-auv is dependent on python3 and Noetic, this is not feasible in practice. Instead, use Docker and Compose.
 
-## Note: The simulator depends on ROS Melodic and Vortex-AUV
-##### Install these if you do not have it already!
+To do anything useful with the simulator, you will need the vortex-auv repository on your machine as well. The nodes in vortex-auv will interact with the simulator and allow us to perform integration tests without needing the physical vessels and a real-world testing facility.
 
-Installation guide for Vortex-AUV and ROS Melodic: https://github.com/vortexntnu/Vortex-AUV
+## 1. Launch the simulator with Docker Compose
+If you have cloned this repo already, simply use 
 
-Further documentation for ROS Melodic: http://wiki.ros.org/melodic
+```
+docker compose up
+```
+(or docker-compose up if you are still on V1) after navigating to the folder containing the compose file.
 
-## 1. Download and build the customized UUV simulator for Manta AUV ##
-###### Requires ROS Melodic and Vortex-AUV
-  
--------------------------
-1. Enter the folder where you want to clone the repostory:
-	```bash
-	cd vortex_ws/src
-	```
+If you instead wish to run the simulator without needing to clone the repo, use the command
 
-2. Clone the repository: 
-	```bash
-	git clone https://github.com/vortexntnu/vortex-simulator.git
-	```
+```
+docker run --rm --privileged -it --network=host --user vortex -e DISPLAY=":0" ghcr.io/vortexntnu/vortex-simulator:development
+```
 
-3. Compile the code by running "catkin build" inside the workspace:
-	```bash
-	cd ~/vortex_ws/
-	catkin build
-	```
 	
-	If catkin build crashes your pc, try:
-	```bash
-	catkin build -j2
-	```
-	This should limit the amount of cpu recources used whilst building.
-	
-## 2. Run Vortex Simulator ##
+## 2. Customize the simulator ##
 -------------------------
+The section below outlines the various options you can set to customize/change the simulation environment. These are currently not settable from outside the docker container, so to proceed with these steps, you will have to override the entrypoint of the simulator container, by adding
 
-### Method 1. Using launch files ### 
+```
+entrypoint: ["/bin/bash", "-l"]
+
+```
+to the bottom of the `docker-compose.yml` file.
+
+You may now run 
+
+```
+docker compose up -d
+```
+
+then
+
+```
+docker compose exec vortex-simulator bash
+```
+
+You should now have a shell attached to the simulator container. Since we overwrote the entrypoint, you will now need to launch the simulator manually:
+
+
+
+### Method 1. Using different launch files ### 
 
 1. Open a new terminal and launch a simulation. This will upload Manta (w/ sensor, camera, thrusters etc.), start the simulation world, upload any other object models, and launch robot localization i.e :
 	```bash
@@ -63,8 +69,8 @@ Further documentation for ROS Melodic: http://wiki.ros.org/melodic
 Builtin simulator worlds:
 - basin_sim.launch
 - cybernetics_sim.launch
-- robosub_sim.launch
-- vortex_sim.launch
+- robosub2019_sim.launch
+- robosub2022_sim.launch
 
 ROS launch arguments:
 | Argument    | Type  | Default | Description                                          |
@@ -76,21 +82,6 @@ ROS launch arguments:
 | set_timeout | bool  | false   | Enable timeout of Simulation (stop runtime)          |
 | timeout     | float | 0.0     | Set the runtime period (only if set_timeout is true) |
 	
-2. Launch all modules required for operating Manta:
-	```bash
-	roslaunch auv_setup <drone>.launch type:=simulator
-	```
-Where \<drone\> is either manta or beluga.  
-	
-2. Execute your state machine of choice. i.e: 
-	```bash
-	roslaunch finite_state_machine simtest.launch
-	```
-
-Builtin finite state machines:
-- simtest.launch
-- pooltest.launch
-- go_to_and_inspect_point.launch
 
 ### Method 2. Using combined Simulator and AUV-modules launch file ###
 
@@ -101,9 +92,8 @@ Builtin finite state machines:
 To choose a different simulator world, use ROS launch argument 'pool'. Builtin pools:
 - basin_pool
 - cybernetics_pool
-- robosub_pool
-- vortex_pool
-- empty_underwater_world
+- robosub2019_pool
+- robosub2022_pool
 
 ROS launch arguments:
 | Argument    | Type   | Default          | Description                                          |
