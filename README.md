@@ -30,7 +30,7 @@ docker compose up
 If you instead wish to run the simulator without needing to clone the repo, use the command
 
 ```
-docker run --rm --privileged -it --network=host --user vortex -e DISPLAY=":0" ghcr.io/vortexntnu/vortex-simulator:development
+docker run --rm --privileged -it --network=host --user vortex -e DISPLAY=":0" ghcr.io/vortexntnu/vortex-auv-simulator:development
 ```
 
 	
